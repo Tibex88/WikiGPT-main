@@ -1,0 +1,26 @@
+
+
+
+.scroll{
+    &__categ{
+        // background-color: blue;
+        // &::-webkit-scrollbar{
+        //     height: 0px ;
+        // }
+
+        &::webkit-scrollbar-track {
+            background: red ;
+            color: aqua;
+            border-radius: 180vw;
+            margin-block: .5rem;
+            // margir-q
+        }
+    }
+}
+
+::—webkit-scrollbar-track {
+    background: red;
+    color: aqua;
+    border-radius: 180vw;
+    margin-block: .5rem;
+}

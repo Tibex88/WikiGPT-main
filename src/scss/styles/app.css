@@ -1,0 +1,197 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Mabry";
+  src: url("/src/assets/fonts/mabrypro-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mabry";
+  src: url("/src/assets/fonts/mabrypro-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mabry";
+  src: url("/src/assets/fonts/mabrypro-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mabry";
+  src: url("/src/assets/fonts/mabrypro-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mabry";
+  src: url("/src/assets/fonts/mabrypro-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+body {
+  font-family: "Mabry" !important;
+}
+
+.page {
+  order: 1;
+  z-index: 1;
+  flex-grow: 1;
+  flex-basis: 65%;
+  border-right: solid 0px black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 180px;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fff;
+}
+.page__wrapper {
+  margin-top: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 1.25em;
+  position: relative;
+  background-size: 75px;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.page .profile {
+  text-align: center;
+}
+
+.profile__img > img {
+  transition: all 300ms;
+  border: 3px solid;
+  border-color: #ffc900;
+  border-radius: 73% 27% 30% 70%/75% 25% 75% 25%;
+}
+.profile__img > img:hover {
+  border-radius: 50%;
+  border-color: #ff7051;
+  filter: none;
+}
+
+.button__logout {
+  border: solid 3px black;
+  color: black;
+  background-color: #ff7051;
+}
+.button__categ {
+  border: solid black;
+  text-transform: capitalize;
+  border-radius: 5px;
+  color: black;
+  transition: all 300ms ease-in-out;
+  min-height: 36px;
+}
+.button__categ:hover {
+  background-color: #23a094;
+  color: #feecd6;
+  filter: drop-shadow(6px 6px 0px black);
+}
+
+.input__search {
+  border: solid black;
+  border-radius: 6px;
+  transition: all 300ms;
+  margin-bottom: 1rem;
+  width: 65%;
+}
+.input__search > input {
+  color: #ff90e8;
+  font-size: 20px;
+  font-weight: bold;
+}
+.input__search > input::selection {
+  color: white;
+  background-color: #ff90e8;
+}
+.input__search > svg {
+  color: #ff90e8;
+  font-size: 20px;
+}
+.input__search:hover {
+  filter: drop-shadow(6px 6px 0px black);
+}
+
+.scroll__categ::webkit-scrollbar-track {
+  background: red;
+  color: aqua;
+  border-radius: 180vw;
+  margin-block: 0.5rem;
+}
+
+::—webkit-scrollbar-track {
+  background: red;
+  color: aqua;
+  border-radius: 180vw;
+  margin-block: 0.5rem;
+}
+
+.list {
+  width: 65%;
+}
+
+.avatar__profile {
+  transition: all 300ms;
+}
+.avatar__profile > img:hover {
+  border-radius: 50%;
+}
+
+.card {
+  user-select: none;
+}
+.card__wrapper {
+  width: 80%;
+  text-align: left;
+}
+.card__wrapper p {
+  margin: 5px auto;
+}
+.card__content {
+  padding: 20px;
+  background: #ffc900;
+  border-radius: 6px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+.card__content p {
+  padding: 8px;
+  margin: 0;
+  border-radius: 5px;
+}
+.card__content p:hover {
+  outline: 3px solid black;
+  background-color: #feecd6;
+  color: #23a094;
+}
+
+.nav :nth-child(1) {
+  transform: rotate(2deg);
+}
+.nav :nth-child(2) {
+  transform: rotate(2deg);
+}
+.nav :nth-child(3) {
+  transform: rotate(-15deg);
+}
+
+.border {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.m0 {
+  margin: 0;
+}

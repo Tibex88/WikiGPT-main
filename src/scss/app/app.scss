@@ -1,0 +1,45 @@
+
+
+@import '../variables';
+@import 'page';
+@import 'profile';
+@import 'button';
+@import 'input';
+@import 'scroll';
+@import 'convolist';
+@import 'avatar';
+@import 'card';
+@import 'nav';
+
+
+$border: 1px solid black;
+
+// body {
+//   font-family: 'Marby' !important;
+// }
+
+
+.border{
+  border-right: $border;
+  border-bottom: $border;
+}
+
+.m0{
+    margin:0;
+}
+
+
+.outline_text{
+  // color:$orange;
+  // -webkit-text-stroke:2px black;
+  // font-size: 37px;
+}
+
+.outline_icon{
+  // filter:drop-shadow 4px 4px 4px black;
+}
+
+// .drop_shadow{
+//   cursor: pointer;
+//   filter: drop-shadow(7px 7px 0px black);
+// }

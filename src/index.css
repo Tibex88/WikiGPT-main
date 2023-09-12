@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height:100vh;
+}
+
+.cursor{
+  background-color: #111;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#root {
+  /* font-family: 'marby'; */
+  /* max-width: 1280px; */
+  /* padding: 2rem; */
+  /* width: 100vw; */
+  margin: 0 auto;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 94vh;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  /* color: #535bf2; */
+}
+
+.drop_shadow{
+  transition: all 300ms;
+}
+
+.drop_shadow:hover{
+  cursor: pointer;
+  filter: drop-shadow(6px 6px 0px black);
+}
+
+.input{
+  width:40%;
+}
+
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+.hide{
+  display:none;
+  transition: all 300ms;
+}
+
+
+.show{
+  /* display:block; */
+  /* transition: all 300ms; */
+}
+
+
+/* svg{
+  filter: drop-shadow(0px 0px 5px rgb(255, 0, 0));
+} */
+
+/* 
+.App{
+  display :flex
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */

@@ -1,0 +1,16 @@
+
+
+.nav{
+
+    :nth-child(1)  {
+        transform: rotate(2deg);
+    }
+
+    :nth-child(2)  {
+        transform: rotate(2deg);
+    }
+
+    :nth-child(3)  {
+        transform: rotate(-15deg);
+    }
+}

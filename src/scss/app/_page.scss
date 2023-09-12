@@ -1,0 +1,59 @@
+
+
+
+.page{
+    order: 1;
+    z-index: 1;
+    flex-grow: 1;
+    flex-basis: 65%;
+    border-right: solid 0px black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 180px;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #fff;
+    // background: url('/src/assets/doodad.png');
+    // filter: sepia(100%);
+    // background-size: 75px;
+
+    // &__list{
+   
+  
+        &__wrapper{
+            margin-top: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            min-height: 1em + (1em * 0.25); // Place for typing indicator
+            position: relative;
+            // color: $message-list-color;
+            // background: $message-list-bg-color;
+            background-size: 75px;
+            box-sizing: border-box;
+            // position: absolute;
+            // top: 0;
+            // left: 0;
+            // right: 0;
+            // bottom: 0;
+            overflow: hidden;
+            overflow-y: scroll; // TODO: Uncomment this when not using fancy scroll
+            // padding: $message-list-scroll-wrapper-padding;
+            padding-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            // justify-content: center;
+            gap: 6px ;
+            align-items: center;
+            // }
+            & * p{
+                // font-size:1.5rem;
+            }
+            
+        }
+        & .profile {
+            text-align: center;
+        }
+  }
