@@ -1,13 +1,11 @@
 import { Outlet, NavLink } from "react-router-dom";
+
 import { useState, useEffect } from 'react'
 
 import {MessageSeparator,InfoButton,AttachmentButton,Search,ConversationHeader, Avatar, SendButton, MainContainer, MessageList, Message, MessageInput, TypingIndicator, Sidebar, ConversationList, Conversation, Button } from '@chatscope/chat-ui-kit-react';
 
-
 //store
 import useSideBarStore from '../store/Sidebar.jsx'
-
-// import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
 //components
 import SideBarActions from '../components/SideBarActions';
@@ -17,6 +15,9 @@ import SocialLinks from '../components/SocialLinks';
 //data
 // import articles from "../devData/articles.jsx";
 import useArticleStore from  "../store/Article.jsx"
+
+//animation
+import {motion, useAnimation} from 'framer-motion'
 
 export default function RootLayout() {
 
@@ -29,7 +30,6 @@ export default function RootLayout() {
     x: 0,
     y: 0
   });
-  
   const [cursorVariant, setCursorVariant] = useState("default");
   // const [showSideBar, setShowSideBar] = useState(true)
 
@@ -68,13 +68,31 @@ export default function RootLayout() {
   // const textLeave = () => setCursorVariant("default");
   const {sidebar, toggleSidebar} = useSideBarStore((state)=>({sidebar: state.sidebar, toggleSidebar:state.toggleSidebar}))
   const {articles} = useArticleStore((state)=>({articles: state.articles}))
+  
+  const mainControls = useAnimation();
+
+  useEffect(()=>{
+    if(!sidebar){
+      mainControls.start("hidden")
+      console.log(sidebar)
+    }
+    else{
+      mainControls.start("visible")
+    }
+  },[sidebar])
  
 
   return (
     <MainContainer>
       {/* {sidebar?  */}
-    <Sidebar className={!sidebar? 'hide':'show'} position='left'>
-      
+    <motion.div
+    variants={{
+      visible:{width: '320px'},
+      hidden:{width:0},
+    }}
+    initial = "visible"
+    animate={mainControls}
+    className={'scrollbar-container cs-sidebar cs-sidebar--left'} position='left'>
       {/* sidebar actions */}
       <div className="nav"  style={{display:'flex',alignItems:'center' , justifyContent:'space-around'}}>
         
@@ -87,7 +105,9 @@ export default function RootLayout() {
         </NavLink>
         {/* <NavLink to='/'>  */}
 
-        <SideBarActions clicked={toggleSidebar} src={'/src/assets/icons/sidepanel-icon.png'}  title={'side-panel'} />
+        <SideBarActions 
+          clicked={toggleSidebar} 
+          src={'/src/assets/icons/sidepanel-icon.png'}  title={'side-panel'} />
         {/* </NavLink> */}
       </div> 
       {/* search bar */}
@@ -137,7 +157,7 @@ export default function RootLayout() {
       <SocialLinks />
       </div>
 
-    </Sidebar>
+    </motion.div>
 
     {/* <ChatPage /> */}
     <Outlet />

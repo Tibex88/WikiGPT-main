@@ -1,10 +1,16 @@
 import React from 'react'
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import SideBarActions from './SideBarActions';
+import { useEffect } from 'react';
 
-import {ArrowButton, StarButton,ConversationHeader, Avatar, Button,InfoButton } from '@chatscope/chat-ui-kit-react';
-import { transform } from 'framer-motion';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+import SideBarActions from './SideBarActions';
+import {ConversationHeader, Avatar, Button,InfoButton } from '@chatscope/chat-ui-kit-react';
+
+//animations
+import { motion} from 'framer-motion'
+import { useAnimation } from 'framer-motion';
+
+//store
 import useSideBarStore from '../store/Sidebar.jsx';
 import useProfileStore from '../store/Profile';
 
@@ -13,15 +19,41 @@ function Header({name='title'}) {
 
     const {sidebar, toggleSidebar} = useSideBarStore((state)=>({sidebar:state.sidebar,toggleSidebar:state.toggleSidebar}))
     const {picture, characters, togglePicture} = useProfileStore((state)=>({picture:state.picture, characters:state.characters, togglePicture:state.togglePicture}))
+    const mainControls = useAnimation();
     const navigate = useNavigate();
 
     const goBack = () =>{
       navigate(-1);
     }
 
+    useEffect(()=>{
+      if(sidebar){
+        mainControls.start("hidden")
+        console.log(sidebar)
+      }
+      else{
+        mainControls.start("visible")
+      }
+    },[sidebar])
+
   return (
-    <ConversationHeader style={{borderBottom:'2px solid black'}}>
-       {!sidebar? <SideBarActions clicked={toggleSidebar} as={'Avatar'} src={'/src/assets/icons/sidepanel-icon.png'}  title={'side-panel'} /> : <div as={'Avatar'}></div> }
+    <div
+      className='cs-conversation-header'
+      style={{borderBottom:'2px solid black'}}>
+        {/* {sidebar ? : } */}
+       <motion.div
+       variants={{
+        hidden:{scale:0},
+        visible:{scale:1},
+        transition:{
+          delay:3
+        }
+      }}
+    animate={mainControls}>
+       <SideBarActions clicked={toggleSidebar} as={'Avatar'} src={'/src/assets/icons/sidepanel-icon.png'}  title={'side-panel'} /> 
+       </motion.div> 
+
+       
         <ConversationHeader.Back onClick={goBack} />
         {/* not allowed to have both */}
         {/* <ArrowButton as={ConversationHeader.Back} direction="right" /> */}
@@ -41,7 +73,7 @@ function Header({name='title'}) {
 <InfoButton style={{marginLeft:'15px'}} title="Help" /> 
 
 </ConversationHeader.Actions>
-    </ConversationHeader>  
+    </div>  
   )
 }
 
