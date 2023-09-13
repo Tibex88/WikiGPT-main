@@ -98,7 +98,8 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   
   &__content {
     box-sizing: border-box;
-    color: $orange;
+    // color: $orange;
+    // color: $pw;
     background-color: $message-content-bg-color;
     background-color:$orange;
     margin-top: $message-content-margin-top;
@@ -112,7 +113,10 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
     font-size: $message-content-font-size;
     font-variant: $message-content-font-variant;
     border: 3px solid black;
-
+    //
+    ::selection{
+      background-color: $pw;
+    }
 
   }
 

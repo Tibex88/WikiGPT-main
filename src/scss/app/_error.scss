@@ -1,0 +1,66 @@
+
+
+.error{
+    position: absolute;
+    z-index: 9999;
+    top: 2em ;
+    background: $orange;
+    padding: 2em;
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 500ms;
+    // margin: 0 7em;
+    // max-height: 20em;
+
+    ::selection{
+        color: $pw;
+        background-color: $green;
+    }
+
+    &:hover {
+        filter:$drop_shadow
+    }
+    & > div {
+        margin-bottom: 1em;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 2em;
+        width: 100%;
+    }
+    
+    &__icon {
+        width: 52px;
+        height: 52px;
+        align-self: self-start;
+        transition: all 500ms;
+        margin-right: 1em;
+        cursor: pointer;
+
+        &:hover {
+            filter: $drop_shadow;
+        }
+    }
+
+    &__title {
+        font-weight: bold;
+    }
+    
+    &__detail {
+        font-size: 1.5em;
+        overflow-x: hidden;
+        // overflow-y: scroll;
+    }
+    &__backdrop{
+        position: absolute;
+        top: 0;
+        z-index: 99;
+        background: #00000034;
+        width: 100vw;
+        height: 100vh;
+    }
+}

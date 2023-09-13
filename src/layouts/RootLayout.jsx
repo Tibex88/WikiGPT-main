@@ -11,6 +11,7 @@ import useSideBarStore from '../store/Sidebar.jsx'
 import SideBarActions from '../components/SideBarActions';
 import Setting from '../components/Setting';
 import SocialLinks from '../components/SocialLinks';
+import Error from "../components/Error.jsx";
 
 //data
 // import articles from "../devData/articles.jsx";
@@ -83,6 +84,8 @@ export default function RootLayout() {
  
 
   return (
+    <>
+    <Error />
     <MainContainer>
       {/* {sidebar?  */}
     <motion.div
@@ -162,5 +165,6 @@ export default function RootLayout() {
     {/* <ChatPage /> */}
     <Outlet />
   </MainContainer>
+  </>
   )
 }

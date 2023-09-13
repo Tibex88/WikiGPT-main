@@ -1,18 +1,31 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+
 // import  wiki from 'wikipedia';
 import axios from 'axios';
 
+//
+import useErrorStore from '../store/Error';
 
+//components
 import {ExpansionPanel ,InfoButton,AttachmentButton,ConversationHeader, Avatar, SendButton, MessageList, Message, MessageInput, ChatContainer, TypingIndicator, Sidebar } from '@chatscope/chat-ui-kit-react';
 import Header from '../components/Header';
+
 import data from '../devData/data'
 import { useLocation, useParams } from 'react-router-dom';
-import SocialLinks from '../components/SocialLinks';
 
 
 function ChatPage() {
+
 const {id} =   useParams()
+const {error, isError,setError, removeError} = useErrorStore((state)=>
+({
+  error:state.error,
+  isError:state.isError, 
+  setError:state.setError, 
+  removeError:state.removeError
+  }))
+
 var url = "http://ce85-146-148-81-230.ngrok-free.app"
 
 const customHeaders = {
@@ -26,11 +39,12 @@ const toggleSidebar = (e) => {
 
   const [messages, setMessages] = useState([
     {
-      // message: "Hello, I'm WikiGPT! Choose your title and ask me anything about it!",
-      // sentTime: "just now",
-      // sender: "WikiGPT"
+      message: "Hello, I'm WikiGPT! Choose your title and ask me anything about it!",
+      sentTime: "just now",
+      sender: "WikiGPT"
     }
   ]);
+
   const [loading, setLoading] = useState(true)
 
   const [isTyping, setIsTyping] = useState(false);
@@ -51,8 +65,6 @@ const toggleSidebar = (e) => {
   };
 
   async function processMessage(newMessages) { // messages is an array of messages
-
-    var e = ''
     
     axios({
       method: 'get',
@@ -62,36 +74,35 @@ const toggleSidebar = (e) => {
         query:newMessages[newMessages.length-1].message
       }
     }).then((response) => {
-    // console.log({response});
-    setMessages([...newMessages, {
+
+      setMessages([...newMessages, {
       message: response.data,
       sendTime: Date.now(),
       sender: "WikiGPT"
     }]);
     console.log(messages)
       setIsTyping(false)
+
         }).catch((error) => {
-          // if(error.message == "Network Error"){
-          //     e = e.message
-          // }
-          // else{
-            e = JSON.stringify(error)
-          // }
-          setMessages([...newMessages, {
-            message: e,
-            sender: "WikiGPT"
-          }]);
+
+          setError({content:(error.message), title:error.name})
+          
+          // setMessages([...newMessages, {
+          //   message: JSON.stringify(error),
+          //   sender: "WikiGPT"
+          // }]);
+
       setIsTyping(false)
-      console.log("Error",error.message, error.code, error.config);
+      // console.log("Error",error.message, error.code, error.config);
     })
   }
 
-  useEffect(()=>{
-    setTimeout(setMessages(data), 100000)
-    setLoading(false)
+  // useEffect(()=>{
+  //   setTimeout(setMessages(data), 100000)
+  //   setLoading(false)
     
-  }
-  , [])
+  // }
+  // , [])
 
   return (
     <ChatContainer>  
@@ -102,14 +113,14 @@ const toggleSidebar = (e) => {
 
     {/* message list */}
     <MessageList
-      loading = {loading}
+      // loading = {loading}
       scrollBehavior="smooth" 
       // typingIndicator={isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null}
     >
       {messages.map((message, i) => {
-        if (i <5)
+        // if (i <5)
         return <Message onClick={toggleSidebar} className='drop_shadow' key={i} model={message}>
-          <Message.Footer style={{height:'30px', width:'30px'}} sender="Emily" sentTime="just now" />
+          {/* <Message.Footer style={{height:'30px', width:'30px'}} sender="Emily" sentTime="just now" /> */}
         </Message>
       })
       }
@@ -117,6 +128,7 @@ const toggleSidebar = (e) => {
 
     {/* message input */}
     <MessageInput placeholder="Ask me a question..." onSend={handleSend} />      
+   
     <Sidebar>
 
 <ExpansionPanel open title="Localization">

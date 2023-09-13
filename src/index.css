@@ -62,8 +62,8 @@ a:hover {
 }
 
 .hide{
-  /* display:none; */
-  visibiliy:hidden;
+  display:none;
+  /* visibiliy:hidden; */
   transition: all 300ms;
 }
 
