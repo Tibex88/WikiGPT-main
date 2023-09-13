@@ -58,10 +58,6 @@ function ExpHist({title}) {
                 <Conversation style={{marginTop:'8px'}} >
                 <Conversation.Content> {'article.name'} </Conversation.Content>
                 </Conversation>
-               
-                <Conversation style={{marginTop:'8px'}} >
-                <Conversation.Content> {'article.name'} </Conversation.Content>
-                </Conversation>
 
             </ConversationList>
         </div>

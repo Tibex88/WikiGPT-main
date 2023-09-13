@@ -95,7 +95,8 @@ export default function RootLayout() {
     }}
     initial = "visible"
     animate={mainControls}
-    className={'scrollbar-container cs-sidebar cs-sidebar--left'} position='left'>
+    className={'scrollbar-container cs-sidebar cs-sidebar--left'}
+    >
       {/* sidebar actions */}
       <div className="nav"  style={{display:'flex',alignItems:'center' , justifyContent:'space-around'}}>
         

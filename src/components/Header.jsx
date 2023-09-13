@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 
+// components
 import SideBarActions from './SideBarActions';
 import {ConversationHeader, Avatar, Button,InfoButton } from '@chatscope/chat-ui-kit-react';
 
@@ -51,9 +52,7 @@ function Header({name='title'}) {
       }}
     animate={mainControls}>
        <SideBarActions clicked={toggleSidebar} as={'Avatar'} src={'/src/assets/icons/sidepanel-icon.png'}  title={'side-panel'} /> 
-       </motion.div> 
-
-       
+       </motion.div>        
         <ConversationHeader.Back onClick={goBack} />
         {/* not allowed to have both */}
         {/* <ArrowButton as={ConversationHeader.Back} direction="right" /> */}
@@ -65,11 +64,7 @@ function Header({name='title'}) {
 <Button onClick={togglePicture} icon={<Avatar style={{width: '42px',height: '42px'}} title={'profile'} src={`/src/assets/chatacters/${characters[picture]}`} />} title="Add to favourites" />
 </NavLink>
 
-{/* <VoiceCallButton title="Start voice call" />
 
-<VideoCallButton title="Start video call" />
-
-*/}
 <InfoButton style={{marginLeft:'15px'}} title="Help" /> 
 
 </ConversationHeader.Actions>
