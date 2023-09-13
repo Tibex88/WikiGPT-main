@@ -78,7 +78,7 @@ export default function RootLayout() {
       {/* sidebar actions */}
       <div className="nav"  style={{display:'flex',alignItems:'center' , justifyContent:'space-around'}}>
         
-        <NavLink to='/'>
+        <NavLink to='/chat/new chat'>
         <SideBarActions src={'/src/assets/icons/add-icon.png'}  title={'new chat'}  />
         </NavLink>
 
@@ -101,7 +101,7 @@ export default function RootLayout() {
         <>
         {/* //   <MessageSeparator style={{marginBottom :'1em'}} content={isoDateString}  as={Conversation}/> */}
         
-          <NavLink to={`${article.name}`}>
+          <NavLink to={`/chat/${article.name}`}>
         <Conversation style={{display:"flex",alignItems:'center', justifyContent:"space-between"}} key={index}  active={false}>
           <Conversation.Content> {article.name} </Conversation.Content>
         <Conversation.Operations visible >
@@ -113,10 +113,9 @@ export default function RootLayout() {
           </Conversation.Operations>
         </Conversation>
           </NavLink> 
-      
         </>
-))
-}
+      ))
+    }
       </ConversationList>
       
       {/* setttings */}

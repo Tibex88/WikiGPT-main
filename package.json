@@ -13,6 +13,7 @@
     "@pinecone-database/pinecone": "^1.0.0",
     "axios": "^1.5.0",
     "framer-motion": "^10.16.4",
+    "memfs": "^4.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
@@ -20,6 +21,7 @@
     "react-simple-chatbot": "^0.6.1",
     "sass": "^1.66.1",
     "scss": "^0.2.4",
+    "vite-plugin-node-polyfills": "^0.14.0",
     "wikijs": "^6.4.1",
     "wikipedia": "^2.1.0",
     "zustand": "^4.4.1"

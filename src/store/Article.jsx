@@ -1,7 +1,10 @@
 import { create } from 'zustand'
 // import articles from '../devData/articles'
+// import indexes from '../api/pinecons'
 
-var articles = [  {"name": "Artificial intelligence",
+var articles = [  
+
+  {"name": "Artificial intelligence",
   "active":false
 },
   {"name": "Machine learning",
@@ -33,6 +36,8 @@ var articles = [  {"name": "Artificial intelligence",
 },
 ]
 
+
+// articles.append(indexes)
 const useArticleStore = create((set) => ({
   articles,
   // toggleArticle: (idx) => set((state) => (

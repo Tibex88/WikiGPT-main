@@ -18,9 +18,19 @@
     }
 }
 
-::—webkit-scrollbar-track {
-    background: red;
-    color: aqua;
-    border-radius: 180vw;
-    margin-block: .5rem;
+// ::—webkit-scrollbar-track {
+//     background: red;
+//     color: aqua;
+//     border-radius: 180vw;
+//     margin-block: .5rem;
+// }
+
+
+//fire fox syntax
+@supports (scrollbar-color: red blue) {
+    *{
+
+        scrollbar-color: #ff7051 #23a094;
+        scrollbar-width: thin;
+    }
 }

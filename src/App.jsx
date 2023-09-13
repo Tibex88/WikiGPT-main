@@ -22,29 +22,24 @@ import NotFound from './pages/NotFound';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<ChatPage />} />
-      <Route path=":id" element={<ChatPage />} >
-    </Route>
-      <Route path="explore" element={<Explore />} />
-      <Route path="settings" element={<Settings />} />
-      <Route path="history" element={<History />} />
-      <Route path="profile" element={<Profile />} />
-      {/* 
-      <Route path="help" element={<HelpLayout />}>
-        <Route path="faq" element={<Faq />} />
-        <Route path="contact" element={<Contact/>} /> */}
-      <Route path="*" element={<NotFound />} />
-      </Route>
-      // <Route path="careers" element={<CareersLayout />}>
-      //   <Route 
-      //     index 
-      //     element={<Careers />} 
-      //     loader={careersLoader} 
-      //   />
-      // </Route>
+      <Route index element={<Explore />} />
 
-    // </Route>
-  )
+      <Route path="chat" >
+        <Route path=":id" element={<ChatPage />} />
+      </Route>
+
+      <Route path="settings" element={<Settings />} />
+
+      <Route path="explore" element={<Explore />} />
+
+      <Route path="history" element={<History />} />
+
+      <Route path="profile" element={<Profile />} />
+
+      <Route path="*" element={<NotFound />} />
+
+    </Route>
+    )
 )
 
 function App() {

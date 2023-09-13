@@ -29,6 +29,7 @@ const toggleSidebar = (e) => {
       // sender: "WikiGPT"
     }
   ]);
+  const [loading, setLoading] = useState(true)
 
   const [isTyping, setIsTyping] = useState(false);
   
@@ -82,9 +83,11 @@ const toggleSidebar = (e) => {
       console.log("Error",error.message, error.code, error.config);
     })
   }
+
   useEffect(()=>{
- 
-    setMessages(data)
+    setTimeout(setMessages(data), 100000)
+    setLoading(false)
+    
   }
   , [])
 
@@ -97,6 +100,7 @@ const toggleSidebar = (e) => {
 
     {/* message list */}
     <MessageList
+      loading = {loading}
       scrollBehavior="smooth" 
       // typingIndicator={isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null}
     >
@@ -105,52 +109,13 @@ const toggleSidebar = (e) => {
         return <Message onClick={toggleSidebar} className='drop_shadow' key={i} model={message}>
           <Message.Footer style={{height:'30px', width:'30px'}} sender="Emily" sentTime="just now" />
         </Message>
-      })}
+      })
+      }
     </MessageList>
 
     {/* message input */}
-    {/* <div>
-      <input type="text" placeholder='Ask anything' />
-    </div> */}
     <MessageInput placeholder="Ask me a question..." onSend={handleSend} />      
-    {/* <input className='' style={{bottom:'10px'}} as={MessageInput} type="text" placeholder='Input' /> */}
-    {/* <div as={MessageInput} style={{
-display: "flex",
-flexDirection: "row",
-borderTop: "1px dashed #d1dbe4"
-}}> */}
 
-{/* <input type="text"style={{position:'fixed' ,bottom:'0px', left:'0px'}} /> */}
-
-{/* <div className='input'>
-
-<MessageInput className='drop_shadow'  sendButton={true} attachButton={false} onSend={handleSend} style={{
-  flexGrow: 1,
-  borderTop: 0,
-  flexShrink: "initial",
-  position:'sticky',
-  width:'30%',
-}} />                                
-
-</div> */}
-                    {/* </div> */}
-                    {/* <SendButton onClick={() => handleSend()} style={{
-  fontSize: "1.2em",
-  marginLeft: 0,
-  paddingLeft: "0.2em",
-  paddingRight: "0.2em"
-}}/> */}
-                    {/* <AttachmentButton style={{
-  fontSize: "1.2em",
-  paddingLeft: "0.2em",
-  paddingRight: "0.2em"
-}} />
-                    <InfoButton onClick={() => alert("Important message!")} style={{
-  fontSize: "1.2em",
-  paddingLeft: "0.2em",
-  paddingRight: "0.2em"
-}} />  */}
-                {/* </div> */}
 
   </ChatContainer>
   )

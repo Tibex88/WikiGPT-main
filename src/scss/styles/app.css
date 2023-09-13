@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Mabry";
   src: url("/src/assets/fonts/mabrypro-light-webfont.woff") format("woff");
@@ -29,7 +28,7 @@
   font-weight: normal;
   font-style: italic;
 }
-body {
+* {
   font-family: "Mabry" !important;
 }
 
@@ -73,10 +72,9 @@ body {
   transition: all 300ms;
   border: 3px solid;
   border-color: #ffc900;
-  border-radius: 73% 27% 30% 70%/75% 25% 75% 25%;
 }
 .profile__img > img:hover {
-  border-radius: 50%;
+  cursor: pointer;
   border-color: #ff7051;
   filter: none;
 }
@@ -131,13 +129,12 @@ body {
   margin-block: 0.5rem;
 }
 
-::—webkit-scrollbar-track {
-  background: red;
-  color: aqua;
-  border-radius: 180vw;
-  margin-block: 0.5rem;
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: #ff7051 #23a094;
+    scrollbar-width: thin;
+  }
 }
-
 .list {
   width: 65%;
 }
