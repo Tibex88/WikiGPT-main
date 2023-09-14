@@ -96,11 +96,11 @@ export default function RootLayout() {
     initial = "visible"
     animate={mainControls}
     className={'scrollbar-container cs-sidebar cs-sidebar--left'}
-    >
+    >  
       {/* sidebar actions */}
       <div className="nav"  style={{display:'flex',alignItems:'center' , justifyContent:'space-around'}}>
         
-        <NavLink to='/chat/new chat'>
+        <NavLink to='/chat'>
         <SideBarActions src={'/src/assets/icons/add-icon.png'}  title={'new chat'}  />
         </NavLink>
 

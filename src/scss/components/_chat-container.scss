@@ -26,7 +26,10 @@
     background-color:transparent;
     margin: auto;
     width: 80%;
-    bottom: 16px;
+    bottom: 38px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     // position: fixed;
     
     & .#{$prefix}-message-input__content-editor-wrapper:first-child {

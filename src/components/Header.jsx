@@ -16,7 +16,7 @@ import useSideBarStore from '../store/Sidebar.jsx';
 import useProfileStore from '../store/Profile';
 
 
-function Header({name='title'}) {
+function Header({name='new chat'}) {
 
     const {sidebar, toggleSidebar} = useSideBarStore((state)=>({sidebar:state.sidebar,toggleSidebar:state.toggleSidebar}))
     const {picture, characters, togglePicture} = useProfileStore((state)=>({picture:state.picture, characters:state.characters, togglePicture:state.togglePicture}))

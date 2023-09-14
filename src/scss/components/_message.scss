@@ -114,7 +114,7 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
     font-variant: $message-content-font-variant;
     border: 3px solid black;
     //
-    ::selection{
+    ::selection {
       background-color: $pw;
     }
 

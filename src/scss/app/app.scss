@@ -10,6 +10,7 @@
 @import 'avatar';
 @import 'card';
 @import 'nav';
+@import 'custom';
 @import 'error';
 
 
@@ -29,6 +30,10 @@ $border: 1px solid black;
     margin:0;
 }
 
+::selection {
+  // background-color: $pw;
+  // color: $green;
+}
 
 .outline_text{
   // color:$orange;

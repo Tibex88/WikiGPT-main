@@ -1,0 +1,13 @@
+import { Avatar } from '@chatscope/chat-ui-kit-react'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+
+function CustomContent() {
+  return (
+    <NavLink style={{margin:'auto'}} className='card__title' to="/explore">
+        <div>Start a new chat</div>
+    </NavLink>
+  )
+}
+
+export default CustomContent

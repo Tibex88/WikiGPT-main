@@ -12,17 +12,20 @@
             color: $pink;
             font-size:20px;
             font-weight: bold;
-            &::selection{
+            &::selection {
                 color: white ;
                 background-color: $pink ;
             }
         }
+
         & > svg {
             color: $pink;
             font-size: 20px;
         }
-        &:hover {
+
+        &:hover, &:active {
             filter: drop-shadow(6px 6px 0px black);
         }
+
     }
 }

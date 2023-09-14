@@ -24,7 +24,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Explore />} />
 
-      <Route path="chat" >
+      <Route path="chat" element={<ChatPage />} >
         <Route path=":id" element={<ChatPage />} />
       </Route>
 
@@ -44,7 +44,6 @@ const router = createBrowserRouter(
 
 function App() {
   return ( 
-  // <RootLayout />/
   <RouterProvider router={router} />
   )
 }

@@ -1,0 +1,16 @@
+
+
+.custom{
+    &__container{
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: "100%";
+        text-align: "center";
+        font-size: "1.2em";
+        width: inherit;
+        background-color: $green;
+    }
+}
