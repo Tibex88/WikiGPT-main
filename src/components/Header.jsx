@@ -16,7 +16,7 @@ import useSideBarStore from '../store/Sidebar.jsx';
 import useProfileStore from '../store/Profile';
 
 
-function Header({name='new chat'}) {
+function Header({children, name='new chat'}) {
 
     const {sidebar, toggleSidebar} = useSideBarStore((state)=>({sidebar:state.sidebar,toggleSidebar:state.toggleSidebar}))
     const {picture, characters, togglePicture} = useProfileStore((state)=>({picture:state.picture, characters:state.characters, togglePicture:state.togglePicture}))
@@ -61,12 +61,10 @@ function Header({name='new chat'}) {
     <ConversationHeader.Actions>                                                                             
 
 <NavLink to="/profile">
-<Button onClick={togglePicture} icon={<Avatar style={{width: '42px',height: '42px'}} title={'profile'} src={`/src/assets/chatacters/${characters[picture]}`} />} title="Add to favourites" />
+<Button onClick={togglePicture} icon={<Avatar style={{width: '42px',height: '42px',marginRight:'15px'}} title={'profile'} src={`/src/assets/chatacters/${characters[picture]}`} />} title="Add to favourites" />
 </NavLink>
 
-
-<InfoButton style={{marginLeft:'15px'}} title="Help" /> 
-
+{children}
 </ConversationHeader.Actions>
     </div>  
   )

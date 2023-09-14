@@ -163,7 +163,6 @@ export default function RootLayout() {
 
     </motion.div>
 
-    {/* <ChatPage /> */}
     <Outlet />
   </MainContainer>
   </>

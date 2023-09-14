@@ -2212,7 +2212,6 @@
   flex-direction: column;
   color: rgba(0, 0, 0, 0.87);
   background-color: #fff;
-  border: solid 1px black;
   font-family: "Marby", Arial, sans-serif, Helvetica Neue, Segoe UI, Helvetica;
   font-weight: normal;
   font-size: inherit;
@@ -2233,10 +2232,13 @@
   align-items: center;
   user-select: none;
   cursor: pointer;
+  background-color: #f9f5f2;
+  border: 0 1px solid black;
 }
 .cs-expansion-panel__header:hover {
   color: rgba(0, 0, 0, 0.6);
   background-color: #f3f8fc;
+  background-color: #ff7051;
 }
 .cs-expansion-panel__title {
   box-sizing: border-box;
@@ -2261,6 +2263,8 @@
   display: block;
   color: rgba(0, 0, 0, 0.87);
   background-color: #fff;
+  background-color: #f9f5f2;
+  border: 1px solid black;
 }
 .cs-expansion-panel--closed .cs-expansion-panel__content {
   display: none;
@@ -2268,6 +2272,7 @@
 .cs-expansion-panel--open .cs-expansion-panel__header {
   color: rgba(0, 0, 0, 0.6);
   background-color: #f6fbff;
+  background-color: #ff7051;
 }
 @font-face {
   font-family: "Mabry";

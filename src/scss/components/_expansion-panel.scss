@@ -8,7 +8,7 @@
   @include flex-column;
   color: $expansion-panel-color;
   background-color: $expansion-panel-bg-color;
-  border: $expansion-panel-border;
+  // border: $expansion-panel-border;
   
   font-family: $expansion-panel-font-family;
   font-weight: $expansion-panel-font-weight;
@@ -29,11 +29,17 @@
     align-items: center;
     user-select:none;
     cursor:pointer;
+    //
+    background-color: $seashell;
+    border: 0 1px solid black;
+    // border-radius: 5px;
+    // margin-bottom: 22px;
   }
 
   &__header:hover {
     color:$expansion-panel-header-hover-color;
     background-color: $expansion-panel-header-hover-bg-color;
+    background-color:$orange;
   }
 
   &__title {
@@ -62,6 +68,9 @@
     display:block;
     color: $expansion-panel-content-open-color;
     background-color:$expansion-panel-content-open-bg-color;
+    background-color:$seashell;
+    border: 1px solid black;
+    
   }
 
   &--closed &__content {
@@ -71,6 +80,8 @@
   &--open &__header {
       color: $expansion-panel-header-open-color;
       background-color:$expansion-panel-header-open-bg-color;
+      background-color:$orange;
+
   }
   
   &--closed {
