@@ -25,12 +25,13 @@
     // background-color: $chat-container-message-input-bg-color;
     background-color:transparent;
     margin: auto;
-    width: 80%;
     bottom: 38px;
-    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
     // position: fixed;
+    width: 53%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-31%);
     
     & .#{$prefix}-message-input__content-editor-wrapper:first-child {
       margin-left:0.8em;

@@ -30,7 +30,7 @@ function Header({children, name='new chat'}) {
     useEffect(()=>{
       if(sidebar){
         mainControls.start("hidden")
-        console.log(sidebar)
+        // console.log(sidebar)
       }
       else{
         mainControls.start("visible")

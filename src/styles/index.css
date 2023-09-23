@@ -214,6 +214,7 @@
 }
 .cs-message:not(:only-child) {
   margin: 0.2em 0 0 0;
+  margin: 1em 0 0 0;
 }
 .cs-message__avatar {
   box-sizing: border-box;
@@ -775,7 +776,7 @@
   overflow: hidden;
   /*overflow-y: scroll*/
   padding: 0.8em 1.2em 0 0.8em;
-  padding-bottom: 32px;
+  padding-bottom: 6em;
 }
 .cs-message-list__scroll-to:first-child {
   box-sizing: border-box;
@@ -1337,11 +1338,12 @@
   color: rgba(0, 0, 0, 0.87);
   background-color: transparent;
   margin: auto;
-  width: 80%;
   bottom: 38px;
-  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  width: 53%;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-31%);
 }
 .cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {
   margin-left: 0.8em;

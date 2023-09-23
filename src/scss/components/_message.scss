@@ -23,11 +23,12 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   border-radius: $message-border-radius;
   
   &:only-child {
-    margin: $message-only-child-margin;
+    margin:$message-only-child-margin;
   }
   
   &:not(:only-child) {
     margin: $message-not-only-child-margin;
+    margin:1em 0 0 0;
   }
 
   &__avatar {

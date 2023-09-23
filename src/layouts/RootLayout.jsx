@@ -1,8 +1,12 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useLoaderData } from "react-router-dom";
 
 import { useState, useEffect } from 'react'
 
 import {MessageSeparator,InfoButton,AttachmentButton,Search,ConversationHeader, Avatar, SendButton, MainContainer, MessageList, Message, MessageInput, TypingIndicator, Sidebar, ConversationList, Conversation, Button } from '@chatscope/chat-ui-kit-react';
+
+
+//axios
+import axios from "axios";
 
 //store
 import useSideBarStore from '../store/Sidebar.jsx'
@@ -24,7 +28,7 @@ export default function RootLayout() {
 
   const currentDate = new Date(); // Create a Date object with the current date and time
   const isoDateString = currentDate.toISOString().split('T')[0];;
-
+  
 
      /// custom mouse
   const [mousePosition, setMousePosition] = useState({
@@ -131,9 +135,9 @@ export default function RootLayout() {
         <Conversation.Operations visible >
           {/*
           {/* operations */}
+          <Button title="mark as favorite" icon={<Avatar onClick={() => alert('favourite clicked')} style={{width:'10px',height:'10px', filter: 'grayscale(100%)'}} src="/SRC/assets/icons/star.png" />} />
           <Avatar onClick={() => alert('delete clicked')} title="delete conversation" style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/delete-icon.png" />
-          <Button onClick={() => alert('edit clicked')} title="edit name" icon={<Avatar style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/hand-with-pen-icon.png" />} />
-          <Button onClick={() => alert('favourite clicked')} title="mark as favorite" icon={<Avatar style={{width:'10px',height:'10px', filter: 'grayscale(100%)'}} src="/SRC/assets/icons/star.png" />} />
+          {/* <Button onClick={() => alert('edit clicked')} title="edit name" icon={<Avatar style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/hand-with-pen-icon.png" />} /> */}
           </Conversation.Operations>
         </Conversation>
           </NavLink> 

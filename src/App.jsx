@@ -19,10 +19,17 @@ import History from './pages/History';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 
+//loader
+// import { articleLoader } from './layouts/RootLayout';
+
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Explore />} />
+    <Route path="/"  element={<RootLayout />}>
+      <Route 
+      index 
+      element={<Explore />} 
+      // loader={articleLoader} 
+      />
 
       <Route path="chat" element={<ChatPage />} >
         <Route path=":id" element={<ChatPage />} />
