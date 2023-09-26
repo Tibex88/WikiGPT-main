@@ -10,7 +10,9 @@
   position: relative;
   color: $message-list-color;
   background: $message-list-bg-color;
-  background-size: 75px;
+  // background-size: px;
+  // filter: grayscale(100%);
+  // background: url("./../assets/doodad.bmp");;
 
   &__scroll-wrapper {
     box-sizing: border-box;
@@ -66,13 +68,13 @@
   }
 
   & .#{$prefix}-message.#{$prefix}-message--incoming,
-  & .#{$prefix}-message-group.#{$prefix}-message-group--incoming,
+  & .#{$prefix}-message-group.#{$prefix}-message-group--incoming
   {
     margin-right: auto;
   }
   
   & .#{$prefix}-message.#{$prefix}-message--outgoing,
-  & .#{$prefix}-message-group.#{$prefix}-message-group--outgoing,
+  & .#{$prefix}-message-group.#{$prefix}-message-group--outgoing
   {
     margin-left: auto;
   }

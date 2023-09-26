@@ -174,7 +174,7 @@ useEffect(()=>{
         </Message>
         )) : 
       <MessageList.Content className='custom__content' style={{display: "flex","flexDirection": "column","justifyContent": "center",height: "100%",textAlign: "center",fontSize: "1.2em"}} >
-          <CustomContent /> 
+          <CustomContent />
       </MessageList.Content>
     }
       <MessageInput className='drop_shadow input__search' onSend={handleSend} />
@@ -185,7 +185,6 @@ useEffect(()=>{
 <AnimatePresence>
 
 {id ?
-
 <motion.div
   variants={{
     visible:{display:'block'},

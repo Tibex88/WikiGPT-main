@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask import Flask, request
 
 #middleware
-from middleware.article import desc_index_stats, init_article, answer, del_namespace
+from app.middleware.article import desc_index_stats, init_article, answer, del_namespace
 # from  import desc_index_stats, init_article, answer, del_namespace
 
 app = Flask(__name__)
@@ -59,5 +59,4 @@ def test_page():
             <input type="submit" value="Submit">
             </form>
         '''
-print(9)
-app.run(port=5000)
+# app.run(port=5000)

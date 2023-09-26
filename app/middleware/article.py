@@ -1,18 +1,18 @@
 import together
 
 #api
-from api.wikipedia_api import get_wikipedia_article
-from api.together_api import model_name, llm
+from app.api.wikipedia_api import get_wikipedia_article
+from app.api.together_api import model_name, llm
 
 #utils
-from util.text_splitter import text_splitter
-from util.embed import embed
+from app.util.text_splitter import text_splitter
+from app.util.embed import embed
 
 #db
-from db.pinecone import pinecone_index,upsert_to_db, get_data_from_db
+from app.db.pinecone import pinecone_index,upsert_to_db, get_data_from_db
 
 #prompt
-from util.prompt_manip import get_prompt,format_prompt,format_response
+from app.util.prompt_manip import get_prompt,format_prompt,format_response
 
 
 def init_article(title):

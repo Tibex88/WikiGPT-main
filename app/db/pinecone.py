@@ -1,5 +1,5 @@
 import pinecone
-from util.embed import embed_model, dimension
+from app.util.embed import embed_model, dimension
 
 # create the index if it does not exist already
 index_name = 'wiki'
