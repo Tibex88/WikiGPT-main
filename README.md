@@ -1,10 +1,9 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](/public/logo.png)
 
 
 # WIKIGPT
 
 #### A Wikipedia integration to LLM's
-
 
 
 ## Tech Stack
@@ -58,31 +57,52 @@ Start the Backend server
 #### Get all items
 
 ```http
-  GET /api/items
+  GET /articles
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+|     N/A   |   N/A    |         N/A                |
 
-#### Get item
+#### Get article list
 
 ```http
-  GET /api/items/${id}
+  GET /article
+```
+
+| Parameter | Type     | Description                                  |
+| :-------- | :------- | :--------------------------------            |
+|`query`    | `string` | **Required**. Question regarding the article |
+|`namespace`| `string` | **Required**. Title for the article           |
+
+#### asking questions
+
+```http
+  POST /new article
+```
+
+| Parameter | Type     | Description                                  |
+| :-------- | :------- | :--------------------------------            |
+|`title`    | `string` | **Required**. Title for the article           |
+
+#### Preparing an article for questioning
+
+```http
+  DELETE /article
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+|`article`  | `string` | **Required**. Title for the article|
 
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
+#### Deleting an article 
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/screenshots/1.png)
+![App Screenshot](/screenshots/2.png)
+![App Screenshot](/screenshots/3.png)
 
 
 ## Appendix
