@@ -18,13 +18,13 @@
 Clone the project
 
 ```
-  git clone https://link-to-project
+  git clone https://[link-to-project](https://github.com/Tibex88/WikiGPT-main)
 ```
 
 Go to the project directory
 
 ```
-  cd my-project
+  cd WikiGPT-main
 ```
 
 Install dependencies for Frontend
