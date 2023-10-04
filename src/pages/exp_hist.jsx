@@ -39,7 +39,7 @@ function ExpHist({title}) {
             {/* end of conversation list */}
 
             <ConversationList className='list'>
-               
+{/*                
                 <Conversation style={{marginTop:'8px'}} >
                 <Conversation.Content> {'article.name'} </Conversation.Content>
                 <Button>
@@ -57,7 +57,7 @@ function ExpHist({title}) {
                
                 <Conversation style={{marginTop:'8px'}} >
                 <Conversation.Content> {'article.name'} </Conversation.Content>
-                </Conversation>
+                </Conversation> */}
 
             </ConversationList>
         </div>

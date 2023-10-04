@@ -61,7 +61,9 @@ function Header({children, name='new chat'}) {
     <ConversationHeader.Actions>                                                                             
 
 <NavLink to="/profile">
-<Button onClick={togglePicture} icon={<Avatar style={{width: '42px',height: '42px',marginRight:'15px'}} title={'profile'} src={`/src/assets/chatacters/${characters[picture]}`} />} title="Add to favourites" />
+<Button 
+// onClick={togglePicture}
+icon={<Avatar style={{width: '42px',height: '42px',marginRight:'15px'}} title={'profile'} src={`/src/assets/chatacters/${characters[picture]}`} />} title="Add to favourites" />
 </NavLink>
 
 {children}

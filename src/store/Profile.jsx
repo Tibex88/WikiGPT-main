@@ -1,7 +1,8 @@
 import { create } from 'zustand'
 
 
-var characters=["neo.png",
+var characters=["walter-white.png",
+                "neo.png",
                 "gizmo.png",
                 "na'vi-avatar.png",
                 "pennywise.png",
@@ -21,7 +22,7 @@ var characters=["neo.png",
                 "money-heist-dali.png",
                 "naruto.png",
                 "harry-potter.png",
-                "walter-white.png"]
+                ]
 
 const min = 0;
 const max = 20;

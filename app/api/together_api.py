@@ -13,7 +13,7 @@ together.api_key = '8a5999799cbc8816956a49eeccddac360945783c0278a420a501baf12269
 model_name = 'togethercomputer/llama-2-7b-chat'
 
 # list available models and descriptons
-models = together.Models.list()
+# models = together.Models.list()
 
 class TogetherLLM(LLM):
     """Together large language models."""

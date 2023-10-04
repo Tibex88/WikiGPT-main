@@ -40,11 +40,11 @@ def answer(query,namespace=''):
     
     prompt_template = get_prompt(prompt)
     
-    together.Models.start(model_name)
+    # together.Models.start(model_name)
     
     output = llm(prompt_template)
     
-    together.Models.stop(model_name)
+    # together.Models.stop(model_name)
     
     return output
 
