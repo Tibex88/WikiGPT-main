@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-// import  wiki from 'wikipedia';
+import  wiki from 'wikipedia';
 import axios from 'axios';
 
 //store
@@ -28,6 +28,7 @@ var url = "http://127.0.0.1:5000"
 const customHeaders = {  'ngrok-skip-browser-warning': true};
 
 const {id} =   useParams()
+
 
 const {error, isError,setError, removeError} = useErrorStore((state)=>
 ({
@@ -65,12 +66,34 @@ const handleSend = async (message) => {
 
   const newMessages = [...messages, newMessage];
   
-  setMessages(newMessages);
+  setMessages( newMessages);
   // console.log(message)
   setIsTyping(true);
   await processMessage(newMessages);
 };
 
+async function getSummary(name){
+  try{
+    const pageObject = {}
+    const page = await wiki.page(name);
+    console.log(page);
+    //Response of type @Page object
+    pageObject["summary"] = (await page.summary()).extract_html;
+    pageObject["references"] = await page.references();
+    console.log(await page.media());
+
+
+    //Response of type @wikiSummary - contains the intro and the main image
+    return pageObject;
+
+  }
+    catch (error) {
+      console.log(error);
+      //=> Typeof wikiError
+    }
+}
+
+getSummary(id)
 async function processMessage(newMessages) { // messages is an array of messages
   
   axios({
@@ -118,7 +141,7 @@ async function processMessage(newMessages) { // messages is an array of messages
 }
 
 const toggleLeftSidebar = (e) => {
-  setLeftSideBar(!leftSiidebar)
+  setLeftSideBar(!leftSiidebar) 
 }
 
 const copy = (e) => {
@@ -141,6 +164,7 @@ useEffect(()=>{
     if(!leftSiidebar){
       mainControls.start("hidden")
       console.log(leftSiidebar)
+
     }
     else{
       mainControls.start("visible")
@@ -235,13 +259,10 @@ useEffect(()=>{
       // transition={{duration: 1}} // Animation duration    
       initial = "visible"
       animate="open"
-      >Lorem ipsum</motion.div>
+      ></motion.div>
 
-      <p>Lorem ipsum</p>
+      {id? getSummary(id)["summary"] : "No Content"}
 
-      <p>Lorem ipsum</p>
-
-      <p>Lorem ipsum</p>
     </motion.div>
 
 </ExpansionPanel>
