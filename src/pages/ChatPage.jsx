@@ -161,7 +161,7 @@ const del = () =>{
     // if (summary==""){
       getSummary(id)
     // }
-  }, [])
+  }, [id])
 
 useEffect(()=>{
     if(!leftSiidebar){
