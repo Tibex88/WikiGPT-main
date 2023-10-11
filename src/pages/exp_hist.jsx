@@ -39,11 +39,11 @@ function ExpHist({title}) {
             {/* end of conversation list */}
 
             <ConversationList className='list'>
-{/*                
+               
                 <Conversation style={{marginTop:'8px'}} >
                 <Conversation.Content> {'article.name'} </Conversation.Content>
                 <Button>
-                <Avatar  src={'/src/assets/icons/send-icon.png'} />
+                <Avatar  src={'/src/assets/icons/arrow-icon.png'} />
                 </Button>
                 </Conversation>
                
@@ -57,7 +57,7 @@ function ExpHist({title}) {
                
                 <Conversation style={{marginTop:'8px'}} >
                 <Conversation.Content> {'article.name'} </Conversation.Content>
-                </Conversation> */}
+                </Conversation>
 
             </ConversationList>
         </div>

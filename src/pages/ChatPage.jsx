@@ -47,6 +47,8 @@ const [messages, setMessages] = useState([
   }
 ]);
 
+const [summary, setSummary] = useState("");
+
 const [loading, setLoading] = useState(true)
 
 const [isTyping, setIsTyping] = useState(false);
@@ -72,19 +74,20 @@ const handleSend = async (message) => {
   await processMessage(newMessages);
 };
 
+
 async function getSummary(name){
   try{
-    const pageObject = {}
+    let pageObject = {}
     const page = await wiki.page(name);
-    console.log(page);
+    // console.log((await page.summary()).extract_html);
     //Response of type @Page object
-    pageObject["summary"] = (await page.summary()).extract_html;
-    pageObject["references"] = await page.references();
-    console.log(await page.media());
-
-
+    // pageObject["summary"] = (await page.summary()).extract_html;
+    setSummary((await page.summary()).extract);
+    console.log(summary)
+    // pageObject["references"] = await page.references();
+    // console.log(await page.media());
     //Response of type @wikiSummary - contains the intro and the main image
-    return pageObject;
+    // return pageObject;
 
   }
     catch (error) {
@@ -93,7 +96,7 @@ async function getSummary(name){
     }
 }
 
-getSummary(id)
+// getSummary(id)
 async function processMessage(newMessages) { // messages is an array of messages
   
   axios({
@@ -152,18 +155,18 @@ const del = () =>{
   alert('delete clicked')
 }
 
-
-  // useEffect(()=>{
-  //   setTimeout(setMessages(data), 100000)
-  //   setLoading(false)
-    
-  // }
-  // , [])
+  useEffect(()=>{
+    // setTimeout(setMessages(data), 100000)
+    // setLoading(false)
+    // if (summary==""){
+      getSummary(id)
+    // }
+  }, [])
 
 useEffect(()=>{
     if(!leftSiidebar){
       mainControls.start("hidden")
-      console.log(leftSiidebar)
+      // console.log(leftSiidebar)
 
     }
     else{
@@ -225,46 +228,7 @@ useEffect(()=>{
 
 <ExpansionPanel style={{backgroundColor:'#ff7051'}} open title="SUMMARY">
     {/* remove transitions if necessary, not working */}
-    <motion.div
-     variants={{
-      initial:{
-        transition:{
-          staggerChildren:0.9
-      },
-    },
-      open:{ 
-           transition: {
-        staggerChildren:0.09
-      },
-    },
-    }}
-    // transition={{ duration: 1 }} // Animation duration    
-    initial = "initial"
-    animate="open"
-    className="">
-
-      <motion.div
-       variants={{
-        initial:{
-          y:'30vh',
-          transition:{duration:0.5},
-        },
-        open:{ 
-        y:0,
-        transition: {
-          duration:0.7
-        },
-        },
-      }}
-      // transition={{duration: 1}} // Animation duration    
-      initial = "visible"
-      animate="open"
-      ></motion.div>
-
-      {id? getSummary(id)["summary"] : "No Content"}
-
-    </motion.div>
-
+    {summary? (<p> {summary} </p>) : <p>No content</p>}
 </ExpansionPanel>
 
 <ExpansionPanel title="MEDIA">
