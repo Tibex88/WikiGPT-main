@@ -7,6 +7,7 @@ import axios from "axios";
 
 //store
 import useErrorStore from "../store/Error";
+import useMessageStore from "../store/Messages";
 
 //components
 import {
@@ -46,17 +47,23 @@ function ChatPage() {
     removeError: state.removeError,
   }));
 
-  const [messages, setMessages] = useState([
-    {
-      message: "Hello, I'm WikiGPT! Ask me anything about this article!",
-      sentTime: "just now",
-      sender: "WikiGPT",
-    },
-  ]);
+  const { messages, addMessage } = useMessageStore((state) => ({
+    messages: state.messages,
+    addMessage: state.addMessage,
+  }));
+
+  // const [messages, setMessages] = useState([
+  //   {
+  //     message: "Hello, I'm WikiGPT! Ask me anything about this article!",
+  //     sentTime: "just now",
+  //     sender: "WikiGPT",
+  //   },
+  // ]);
 
   const [summary, setSummary] = useState("");
   const [reference, setReference] = useState("");
   const [media, setMedia] = useState("");
+  const [newMessages, setNewMessage] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -74,13 +81,14 @@ function ChatPage() {
       direction: "outgoing",
       sender: "user",
     };
+    console.log(messages, addMessage);
+    addMessage(id, newMessage);
 
-    const newMessages = [...messages, newMessage];
+    setNewMessage([...messages[id]]);
 
-    setMessages(newMessages);
     // console.log(message)
     setIsTyping(true);
-    await processMessage(newMessages);
+    // await processMessage(newMessages);
   };
 
   async function getSummary(name) {
@@ -108,6 +116,7 @@ function ChatPage() {
 
   // getSummary(id)
   async function processMessage(newMessages) {
+    console.log(newMessages, "her");
     // messages is an array of messages
 
     axios({
@@ -131,7 +140,7 @@ function ChatPage() {
         // Overall, the historical city center is a unique and important part of a city's fabric, and it is a place that offers a glimpse into the city's rich history and cultural heritage.`
 
         setTimeout(() => {
-          setMessages([
+          setNewMessage([
             ...newMessages,
             {
               message: response.data,
@@ -142,7 +151,7 @@ function ChatPage() {
           ]);
         }, 2000);
 
-        console.log(messages);
+
         setIsTyping(false);
       })
       .catch((error) => {
@@ -170,12 +179,11 @@ function ChatPage() {
   };
 
   useEffect(() => {
-    // setTimeout(setMessages(data), 100000)
-    // setLoading(false)
-    // if (summary==""){
+    // console.log(messages, "here", id);
+    // setNewMessage(messages[id]);
     getSummary(id);
-    // }
-  }, [id]);
+  }, [id, messages]);
+  
 
   useEffect(() => {
     if (!leftSiidebar) {
@@ -208,7 +216,7 @@ function ChatPage() {
           scrollBehavior="smooth"
         >
           {id ? (
-            messages.map((message, i) => (
+            newMessages.map((message, i) => (
               <Message
                 style={{ display: "flex", flexDirection: "row" }}
                 className="drop_shadow"
@@ -298,7 +306,13 @@ function ChatPage() {
               <ul>
                 {reference ? (
                   reference.map((ref, index) => {
-                    return <li><a href={ref} target="_blank">{ref}</a></li> ;
+                    return (
+                      <li>
+                        <a href={ref} target="_blank">
+                          {ref}
+                        </a>
+                      </li>
+                    );
                   })
                 ) : (
                   <p>NO Reference</p>

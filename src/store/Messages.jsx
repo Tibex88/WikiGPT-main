@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+
 // import articles from '../devData/articles'
 // import indexes from '../api/pinecons'
 // require('dotenv').config();
@@ -17,6 +18,17 @@ let articles = [
   { name: "Space exploration", active: false },
 ];
 
+var messages = {};
+
+for (let n of articles) {
+  messages[n.name] = [
+    {
+      message: "Hello, I'm WikiGPT! Ask me anything about this article!",
+      sentTime: "just now",
+      sender: "WikiGPT",
+    },
+  ];
+}
 
 // const url = "http://127.0.0.1:5000"
 
@@ -37,25 +49,24 @@ let articles = [
 // });
 
 // articles.append(indexes)
-const useArticleStore = create((set) => ({
-  articles,
-  
-  // setArticle : (title) => set((state) => ({articles:title })),
-  // toggleArticle: (idx) => set((state) => (
-  // {
-  //   articles:
-  // state.articles.map((article, index) => {
-  //   if (idx === index) {
-  // console.log(state.articles)
-  //   return article.active:true ;
-  // } else {
-  //   return  article.active = false ;
-  // }
-  // })
-  // }
-  // ))
+const useMessageStore = create((set) => ({
+  messages,
+  addMessage: (articlename, message) =>
+    set((state) => state.messages[articlename].push(message)),
+  //   setMessage : (title) => set((state) => ({articles:title })),
+  //   toggleArticle: (idx) => set((state) => (
+  //   {
+  //     articles:
+  //   state.articles.map((article, index) => {
+  //     if (idx === index) {
+  //   console.log(state.articles)
+  //     return article.active:true ;
+  //   } else {
+  //     return  article.active = false ;
+  //   }
+  //   })
+  //   }
+  //   ))
 }));
 
-
-
-export default useArticleStore;
+export default useMessageStore;

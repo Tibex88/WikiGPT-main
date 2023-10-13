@@ -110,6 +110,10 @@
   font-size: 20px;
   font-weight: bold;
 }
+.input__search > input::-moz-selection {
+  color: white;
+  background-color: #ff90e8;
+}
 .input__search > input::selection {
   color: white;
   background-color: #ff90e8;
@@ -143,7 +147,9 @@
 }
 
 .card {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .card__wrapper {
   width: 80%;
@@ -161,7 +167,11 @@
   padding-top: 5px;
   background-repeat: no-repeat;
   background-size: cover;
+  width: -moz-fit-content;
   width: fit-content;
+}
+.card__title::-moz-selection {
+  background-color: #feecd6;
 }
 .card__title::selection {
   background-color: #feecd6;
@@ -218,6 +228,10 @@
   justify-content: center;
   align-items: center;
   transition: all 500ms;
+}
+.error ::-moz-selection {
+  color: #feecd6;
+  background-color: #23a094;
 }
 .error ::selection {
   color: #feecd6;

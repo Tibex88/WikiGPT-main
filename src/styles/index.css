@@ -288,6 +288,9 @@
   font-variant: normal;
   border: 3px solid black;
 }
+.cs-message__content ::-moz-selection {
+  background-color: #feecd6;
+}
 .cs-message__content ::selection {
   background-color: #feecd6;
 }
@@ -1435,7 +1438,9 @@
   color: #6ea9d7;
   background-color: transparent;
   margin: 0 0 0 0.5em;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 @keyframes cs-typing-indicator__typing-animation {
   0% {
@@ -1490,7 +1495,9 @@
   font-family: "Marby", Arial, sans-serif, Helvetica Neue, Segoe UI, Helvetica;
   font-size: 1em;
   flex-shrink: 0;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -1638,7 +1645,9 @@
   justify-content: flex-start;
   color: rgba(0, 0, 0, 0.87);
   background-color: white;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   border-right: 0;
   border-left: 0;
   border: 3px solid black;
@@ -1882,7 +1891,6 @@
   color: rgba(0, 0, 0, 0.87);
   background-color: transparent;
   padding: 0.3px 8px 0.3px 8px;
-  background: url("/src/assets/doodad.png");
   background-size: 75px;
   border: 3px solid black;
 }
@@ -2228,7 +2236,9 @@
   font-weight: bold;
   font-size: 0.75em;
   font-variant: normal;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   padding: 0.8em 0.8em;
   align-items: center;
   user-select: none;
@@ -2341,6 +2351,10 @@
   margin: 0;
   font-weight: bold;
 }
+.cs-search__input::-moz-selection {
+  color: white;
+  background-color: #ff90e8;
+}
 .cs-search__input::selection {
   color: white;
   background-color: #ff90e8;
@@ -2348,6 +2362,9 @@
 .cs-search__input:disabled {
   color: rgba(0, 0, 0, 0.38);
   background-color: #c6e3fa;
+}
+.cs-search__input::-moz-placeholder {
+  color: #ff90e8;
 }
 .cs-search__input::placeholder {
   color: #ff90e8;
@@ -2618,7 +2635,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  backdrop-filter: blur(10%);
+  -webkit-backdrop-filter: blur(10%);
+          backdrop-filter: blur(10%);
 }
 .cs-overlay__content {
   z-index: 220;
@@ -2635,10 +2653,12 @@
   z-index: 200;
 }
 .cs-overlay--blur::before {
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 .cs-overlay--grayscale::before {
-  backdrop-filter: grayscale(50%);
+  -webkit-backdrop-filter: grayscale(50%);
+          backdrop-filter: grayscale(50%);
 }
 
 @font-face {
@@ -2686,7 +2706,9 @@
 .cs-status-list > li {
   box-sizing: border-box;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .cs-status-list > li > .cs-status {
   margin: 0;
@@ -3004,6 +3026,10 @@
   font-size: 20px;
   font-weight: bold;
 }
+.input__search > input::-moz-selection {
+  color: white;
+  background-color: #ff90e8;
+}
 .input__search > input::selection {
   color: white;
   background-color: #ff90e8;
@@ -3037,7 +3063,9 @@
 }
 
 .card {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .card__wrapper {
   width: 80%;
@@ -3055,7 +3083,11 @@
   padding-top: 5px;
   background-repeat: no-repeat;
   background-size: cover;
+  width: -moz-fit-content;
   width: fit-content;
+}
+.card__title::-moz-selection {
+  background-color: #feecd6;
 }
 .card__title::selection {
   background-color: #feecd6;
@@ -3112,6 +3144,10 @@
   justify-content: center;
   align-items: center;
   transition: all 500ms;
+}
+.error ::-moz-selection {
+  color: #feecd6;
+  background-color: #23a094;
 }
 .error ::selection {
   color: #feecd6;
