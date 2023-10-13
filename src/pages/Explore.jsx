@@ -1,15 +1,17 @@
 import ExpHist from "./exp_hist";
 import useArticleStore from "../store/Article";
 import { useLoaderData } from "react-router-dom";
+import useMessageStore from "../store/Messages";
 
 export default function Explore() {
-  const { articles, setArticle } = useArticleStore((state) => ({
-    articles: state.articles,
-    setArticle: state.setArticle,
-  }));
+  // const { articles, setArticle } = useArticleStore((state) => ({
+  //   articles: state.articles,
+  //   setArticle: state.setArticle,
+  // }));
+
   const list = useLoaderData();
   console.log({ list });
-  return <ExpHist title="explore" articles={articles} />;
+  return <ExpHist title="explore" />;
 }
 
 export const articleLoader = async () => {

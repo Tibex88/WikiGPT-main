@@ -8,7 +8,7 @@ import {
 
 
 //layout
-import RootLayout from './layouts/RootLayout';
+import RootLayout, { conversationloader } from './layouts/RootLayout';
 
 
 //pages
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
       <Route 
       index 
       element={<Explore />} 
-      // loader={articleLoader} 
+      loader={conversationloader} 
       />
 
       <Route path="chat" element={<ChatPage />} >

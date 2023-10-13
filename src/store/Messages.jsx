@@ -52,7 +52,17 @@ for (let n of articles) {
 const useMessageStore = create((set) => ({
   messages,
   addMessage: (articlename, message) =>
-    set((state) => state.messages[articlename].push(message)),
+    set((state) => {
+      if (!state.messages.hasOwnProperty(articlename))
+        state.messages[articlename] = []
+        state.messages[articlename].push({
+          message: "Hello, I'm WikiGPT! Ask me anything about this article!",
+          sentTime: "just now",
+          sender: "WikiGPT",
+        });
+
+      state.messages[articlename].push(message);
+    }),
   //   setMessage : (title) => set((state) => ({articles:title })),
   //   toggleArticle: (idx) => set((state) => (
   //   {
