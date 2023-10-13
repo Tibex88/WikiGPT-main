@@ -7,7 +7,7 @@ import axios from "axios";
 
 //store
 import useErrorStore from "../store/Error";
-import useMessageStore from "../store/Messages";
+import useMessageStore, { addMessage } from "../store/Messages";
 
 //components
 import {
@@ -47,9 +47,8 @@ function ChatPage() {
     removeError: state.removeError,
   }));
 
-  const { messages, addMessage } = useMessageStore((state) => ({
+  const { messages } = useMessageStore((state) => ({
     messages: state.messages,
-    addMessage: state.addMessage,
   }));
 
   // const [messages, setMessages] = useState([
@@ -60,11 +59,11 @@ function ChatPage() {
   //   },
   // ]);
 
+  addMessage(id, "first");
+
   const [summary, setSummary] = useState("");
   const [reference, setReference] = useState("");
   const [media, setMedia] = useState("");
-  const [newMessages, setNewMessage] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
   const [isTyping, setIsTyping] = useState(false);
@@ -75,6 +74,8 @@ function ChatPage() {
 
   const panelControls = useAnimation();
 
+  const [currentChatMessage, setCurrentMessage] = useState([]);
+
   const handleSend = async (message) => {
     const newMessage = {
       message,
@@ -84,11 +85,11 @@ function ChatPage() {
     console.log(messages, addMessage);
     addMessage(id, newMessage);
 
-    setNewMessage([...messages[id]]);
+    setCurrentMessage(messages[id]);
 
     // console.log(message)
     setIsTyping(true);
-    // await processMessage(newMessages);
+    await processMessage(currentChatMessage);
   };
 
   async function getSummary(name) {
@@ -115,8 +116,8 @@ function ChatPage() {
   }
 
   // getSummary(id)
-  async function processMessage(newMessages) {
-    console.log(newMessages, "her");
+  async function processMessage(currentChatMessage) {
+    console.log(currentChatMessage, "her");
     // messages is an array of messages
 
     axios({
@@ -124,7 +125,7 @@ function ChatPage() {
       url: `${url}/article`,
       headers: customHeaders,
       params: {
-        query: newMessages[newMessages.length - 1].message,
+        query: currentChatMessage[currentChatMessage.length - 1].message,
         namespace: id,
       },
     })
@@ -138,26 +139,24 @@ function ChatPage() {
         // In many cases, the historical city center has been preserved and restored to maintain its original character, and it is often a place of great beauty and charm. However, it can also be a place of conflict, as modern development and urban planning can sometimes clash with the desire to preserve the city's historical heritage.
 
         // Overall, the historical city center is a unique and important part of a city's fabric, and it is a place that offers a glimpse into the city's rich history and cultural heritage.`
-
-        setTimeout(() => {
-          setNewMessage([
-            ...newMessages,
-            {
-              message: response.data,
-              // message: sample,
-              sendTime: Date.now(),
-              sender: "WikiGPT",
-            },
-          ]);
-        }, 2000);
-
+        addMessage(id, { message: response.data, sender: "WikiGPT" });
+        setCurrentMessage(messages[id]);
+        // setCurrentMessage([
+        //   ...currentChatMessage,
+        //   {
+        //     message: response.data,
+        //     // message: sample,
+        //     sendTime: Date.now(),
+        //     sender: "WikiGPT",
+        //   },
+        // ]);
 
         setIsTyping(false);
       })
       .catch((error) => {
         setError({ content: error.message, title: error.name });
 
-        // setMessages([...newMessages, {
+        // setMessages([...currentChatMessage, {
         //   message: JSON.stringify(error),
         //   sender: "WikiGPT"
         // }]);
@@ -180,10 +179,9 @@ function ChatPage() {
 
   useEffect(() => {
     // console.log(messages, "here", id);
-    // setNewMessage(messages[id]);
+    setCurrentMessage(messages[id]);
     getSummary(id);
   }, [id, messages]);
-  
 
   useEffect(() => {
     if (!leftSiidebar) {
@@ -216,7 +214,7 @@ function ChatPage() {
           scrollBehavior="smooth"
         >
           {id ? (
-            newMessages.map((message, i) => (
+            currentChatMessage.map((message, i) => (
               <Message
                 style={{ display: "flex", flexDirection: "row" }}
                 className="drop_shadow"

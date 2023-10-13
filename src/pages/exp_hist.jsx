@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import wiki from "wikipedia";
 import Header from "../components/Header";
@@ -10,38 +10,32 @@ import {
   Conversation,
   Avatar,
 } from "@chatscope/chat-ui-kit-react";
+import useArticleStore, { addArticle } from "../store/Article";
 
 function ExpHist({ title, articles }) {
   const [searchString, setSearchString] = useState("");
-  const [searchedArticle, setSearchedArticle] = useState(articles);
+  const [searchedArticle, setSearchedArticle] = useState([]);
+
+  const navigate = useNavigate();
 
   async function searchArticle(event) {
     if (event.code === "Enter") {
       try {
-        const page = await wiki.page(searchString);
-        const newArticle = { name: page.title };
-
-        articles.unshift(newArticle);
-        // Update state without mutating the original arrays
-        setSearchedArticle((prevSearchedArticles) => {
-          if (prevSearchedArticles[0] == newArticle) {
-            setSearchString("");
-            return prevSearchedArticles;
-          }
-
-          if (prevSearchedArticles.length == 1) {
-            setSearchString("");
-            return [...articles];
-          }
-
-          return [newArticle, ...prevSearchedArticles];
-        });
+        const page = await wiki.search(searchString);
+        setSearchedArticle(page.results);
       } catch (error) {
         setSearchedArticle((prevSearchedArticles) => {
           return [{ name: "No Articles Found With The Name: " + searchString }];
         });
       }
     }
+  }
+
+  async function intialize(event) {
+    const title = event.target.innerText;
+    articles.unshift({ name: title, active: false });
+    await addArticle(title);
+    navigate("/chat/" + title);
   }
 
   return (
@@ -58,14 +52,18 @@ function ExpHist({ title, articles }) {
         <ConversationList className="list">
           {searchedArticle.map((article, index) => {
             return (
-              <NavLink to={`/chat/${article.name}`}>
-                <Conversation style={{ marginTop: "8px" }} key={index}>
-                  <Conversation.Content>{article.name}</Conversation.Content>
-                  <Button>
-                    <Avatar src="/src/assets/icons/arrow-icon.png" />
-                  </Button>
-                </Conversation>
-              </NavLink>
+              <Conversation
+                onClick={(event) => {
+                  intialize(event);
+                }}
+                style={{ marginTop: "8px" }}
+                key={index}
+              >
+                <Conversation.Content>{article.title}</Conversation.Content>
+                <Button>
+                  <Avatar src="/src/assets/icons/arrow-icon.png" />
+                </Button>
+              </Conversation>
             );
           })}
         </ConversationList>

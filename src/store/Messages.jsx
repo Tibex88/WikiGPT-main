@@ -1,22 +1,12 @@
 import { create } from "zustand";
 import axios from "axios";
+import { fetchArticles } from "./Article";
 
 // import articles from '../devData/articles'
 // import indexes from '../api/pinecons'
 // require('dotenv').config();
 
-let articles = [
-  { name: "USS Marmora (1862)", active: false },
-  { name: "Machine learning", active: false },
-  { name: "Quantum computing", active: true },
-  { name: "Blockchain", active: false },
-  { name: "Space exploration", active: false },
-  { name: "Renewable energy", active: false },
-  { name: "Climate change mitigation", active: false },
-  { name: "History of Rome", active: false },
-  { name: "Interstate 90", active: false },
-  { name: "Space exploration", active: false },
-];
+let articles = await fetchArticles();
 
 var messages = {};
 
@@ -28,6 +18,22 @@ for (let n of articles) {
       sender: "WikiGPT",
     },
   ];
+}
+
+
+export function addMessage(articlename, message) {
+  if (!messages.hasOwnProperty(articlename)) {
+    messages[articlename] = [
+      {
+        message: "Hello, I'm WikiGPT! Ask me anything about this article!",
+        sentTime: "just now",
+        sender: "WikiGPT",
+      },
+    ];
+    return;
+  }
+  if (message == "first") return;
+  messages[articlename].push(message);
 }
 
 // const url = "http://127.0.0.1:5000"
@@ -52,7 +58,20 @@ for (let n of articles) {
 const useMessageStore = create((set) => ({
   messages,
   addMessage: (articlename, message) =>
-    set((state) => state.messages[articlename].push(message)),
+    set((state) => {
+      if (!state.messages.hasOwnProperty(articlename)) {
+        state.messages[articlename] = [
+          {
+            message: "Hello, I'm WikiGPT! Ask me anything about this article!",
+            sentTime: "just now",
+            sender: "WikiGPT",
+          },
+        ];
+        return;
+      }
+      if (message == "first") return;
+      state.messages[articlename].push(message);
+    }),
   //   setMessage : (title) => set((state) => ({articles:title })),
   //   toggleArticle: (idx) => set((state) => (
   //   {
