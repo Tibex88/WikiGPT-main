@@ -4,6 +4,7 @@ from flask import Flask, request
 
 #middleware
 from app.middleware.article import desc_index_stats, init_article, answer, del_namespace
+from app.util.relevantlink import scrape_google
 # from  import desc_index_stats, init_article, answer, del_namespace
 
 app = Flask(__name__)
@@ -28,21 +29,27 @@ def query_article():
     print("query" ,query)
     print("namespace" ,namespace)
     ans = answer(query, namespace)
-    return ans
+    links = scrape_google(ans)
+    print(links)
+    return [ans,links]
 
 # initialize article
 @app.route("/new article", methods=['POST'])
 def POST_articles():
   title = request.form.get('title')
-
-  print(f"Received title: {title}")
-  is_uploaded = init_article(title)
-  if is_uploaded:
-    namespaces = desc_index_stats()
-    return namespaces
+  namespaces = desc_index_stats()
+  if title in namespaces: 
+    print("already exists")
+    return [True]
   else:
-    return not (is_uploaded)
-
+    print(f"Received title: {title}")
+    # return True
+    is_uploaded = init_article(title)
+    if is_uploaded:
+      namespaces = desc_index_stats()
+      return namespaces
+    else:
+      return not (is_uploaded)
 
 # delete article
 @app.route("/article/<string:article>", methods=['DELETE'])
