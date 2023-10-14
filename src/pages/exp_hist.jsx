@@ -1,68 +1,75 @@
-import React from 'react'
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import Header from '../components/Header'
-import { Search, Button, ConversationList, Conversation, Avatar } from '@chatscope/chat-ui-kit-react'
+import wiki from "wikipedia";
+import Header from "../components/Header";
+import {
+  Search,
+  Button,
+  ConversationList,
+  Conversation,
+  Avatar,
+} from "@chatscope/chat-ui-kit-react";
+import useArticleStore, { addArticle } from "../store/Article";
 
-function ExpHist({title}) {
+function ExpHist({ title, articles }) {
+  const [searchString, setSearchString] = useState("");
+  const [searchedArticle, setSearchedArticle] = useState([]);
+
+  const navigate = useNavigate();
+
+  async function searchArticle(event) {
+    if (event.code === "Enter") {
+      try {
+        const page = await wiki.search(searchString);
+        setSearchedArticle(page.results);
+      } catch (error) {
+        setSearchedArticle((prevSearchedArticles) => {
+          return [{ name: "No Articles Found With The Name: " + searchString }];
+        });
+      }
+    }
+  }
+
+  async function intialize(event) {
+    const title = event.target.innerText;
+    articles.unshift({ name: title, active: false });
+    await addArticle(title);
+    navigate("/chat/" + title);
+  }
+
   return (
-    <div className='page'>
-        <Header name={title} />
-        <div className='page__wrapper'>
-            <Search className='input__search' placeholder='Search' />
-            {/* <div
-            className='scroll__categ' 
-            style={{listStyleType:'none',maxWidth: '87%', overflowX:'scroll', overflowY:'hidden' ,padding: '10px', display:'flex', rowGap: '10px'}}
-            >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            <Button className='button__categ'>prog</Button >
-            </div>  */}
+    <div className="page">
+      <Header name={title} />
+      <div className="page__wrapper">
+        <Search
+          className="input__search"
+          placeholder="Search"
+          onChange={(str) => setSearchString(str)}
+          onKeyDown={searchArticle}
+        />
 
-            {/* end of conversation list */}
-
-            <ConversationList className='list'>
-               
-                <Conversation style={{marginTop:'8px'}} >
-                <Conversation.Content> {'article.name'} </Conversation.Content>
+        <ConversationList className="list">
+          {searchedArticle.map((article, index) => {
+            return (
+              <Conversation
+                onClick={(event) => {
+                  intialize(event);
+                }}
+                style={{ marginTop: "8px" }}
+                key={index}
+              >
+                <Conversation.Content>{article.title}</Conversation.Content>
                 <Button>
-                <Avatar  src={'/src/assets/icons/arrow-icon.png'} />
+                  <Avatar src="/src/assets/icons/arrow-icon.png" />
                 </Button>
-                </Conversation>
-               
-                <Conversation style={{marginTop:'8px'}} >
-                <Conversation.Content> {'article.name'} </Conversation.Content>
-                </Conversation>
-               
-                <Conversation style={{marginTop:'8px'}} >
-                <Conversation.Content> {'article.name'} </Conversation.Content>
-                </Conversation>
-               
-                <Conversation style={{marginTop:'8px'}} >
-                <Conversation.Content> {'article.name'} </Conversation.Content>
-                </Conversation>
-
-            </ConversationList>
-        </div>
+              </Conversation>
+            );
+          })}
+        </ConversationList>
+      </div>
     </div>
-  )
+  );
 }
 
-export default ExpHist
+export default ExpHist;
