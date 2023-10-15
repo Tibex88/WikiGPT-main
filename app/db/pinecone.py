@@ -1,7 +1,13 @@
 import pinecone
 from app.util.embed import embed_model, dimension
 
-# create the index if it does not exist already
+# import os
+# from dotenv import load_dotenv
+# # create the index if it does not exist already
+
+# load_dotenv()
+
+# GCP_PROJECT_ID = os.getenv('GCP_PROJECT_ID')
 index_name = 'wiki'
 
 # initialize connection to pinecone
