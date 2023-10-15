@@ -9,7 +9,8 @@
   min-height: 1em + (1em * 0.25); // Place for typing indicator
   position: relative;
   color: $message-list-color;
-  background: $message-list-bg-color;
+  // background: $message-list-bg-color;
+  background: linear-gradient(to bottom, $clr-1,$clr-2);
   // background-size: px;
   // filter: grayscale(100%);
   // background: url("./../assets/doodad.bmp");;

@@ -14,10 +14,10 @@
   color: $conversation-list-color;
   background-color: $conversation-list-bg-color;
   //
-  padding: 0.3px 8px 0.3px 8px;
+  // padding: 0.3px 8px 0.3px 8px;
   // background: url('/src/assets/doodad.png');
   background-size: 75px;
-  border: 3px solid black;
+  // border: 3px solid $orange;
 
   & > div > ul {
     @include reset-list;

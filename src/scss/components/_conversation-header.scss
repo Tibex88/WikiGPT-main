@@ -7,7 +7,8 @@
   
   box-sizing: border-box;
   color: $conversation-header-color;
-  background-color: white;
+  // background-color: white;
+  background-color: $clr-1;
   font-family: $conversation-header-font-family;
   font-size: $conversation-header-font-size;
   flex-shrink: 0;
@@ -18,7 +19,8 @@
   align-items: stretch;
   border-top: $conversation-header-border-top;
   border-right: $conversation-header-border-right;
-  border-bottom: $conversation-header-border-bottom;
+  // border-bottom: $conversation-header-border-bottom;
+  border-bottom: 2px solid $orange;
   border-left: $conversation-header-border-left;
   padding: 0.6em 0.9em;
   //
@@ -73,12 +75,15 @@
       box-sizing: border-box;
       @include text-truncate;
       font-weight: bold;
-      color: $conversation-header-user-name-color;
-      background-color: white;
+      // color: $conversation-header-user-name-color;
+      color: $text;
+      // background-color: white;
+      background-color: $clr-1;
 
       //
-      color: transparent;
-      -webkit-text-stroke:2px black;
+      // color: transparent;
+      color: $text;
+      // -webkit-text-stroke:2px black;
       font-size: 37px;
     
     }

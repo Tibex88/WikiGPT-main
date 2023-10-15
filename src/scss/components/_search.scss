@@ -14,7 +14,8 @@
   padding: 0.6em 0.9em;
   font-size: $search-font-size;
   font-family: $search-font-family;
-  border: 2px solid black;
+  border: 2px solid $orange;
+  border-radius:10px;
   
   // margin-right: 0;
   // margin-left: 0;
@@ -26,7 +27,8 @@
   &__input {
     box-sizing: border-box;
     order:1;
-    color: $pink;
+    // color: $pink;
+    color: $orange;
     border:none;
     width:100%;
     min-width: 0; // FF fix
@@ -43,6 +45,7 @@
     &::selection{
       color: white ;
       background-color: $pink ;
+      background-color: $orange ;
   }
   }
 
@@ -52,7 +55,8 @@
   }
 
   &__input::placeholder {
-    color: $pink;
+    // color: $pink;
+    color: $orange;
   }
   
   &__search-icon {
@@ -60,13 +64,15 @@
     order:0;
     display:block;
     margin-right:0.5em;
-    color: $pink;
+    // color: $pink;
+    color: $orange;
   }
 
   &__clear-icon {
     box-sizing: border-box;
     &:hover {
-      color: red;
+      // color: red;
+    color: $orange;
       cursor: pointer;
     }
     order: 2;

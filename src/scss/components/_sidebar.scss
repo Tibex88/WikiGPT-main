@@ -19,6 +19,7 @@
   
   &--right {
     background-color: $sidebar-right-bg-color;
+    background:linear-gradient(to bottom, $clr-1, $clr-2);
   }
   
   & .#{$prefix}-expansion-panel + .#{$prefix}-expansion-panel {

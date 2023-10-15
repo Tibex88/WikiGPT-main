@@ -12,6 +12,7 @@
 @import 'nav';
 @import 'custom';
 @import 'error';
+@import 'setting-card';
 
 
 $border: 1px solid black;
@@ -20,6 +21,9 @@ $border: 1px solid black;
 //   font-family: 'Marby' !important;
 // }
 
+*{
+  // color:white
+}
 
 .border{
   border-right: $border;

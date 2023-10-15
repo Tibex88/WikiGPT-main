@@ -40,7 +40,7 @@ function Header({children, name='new chat'}) {
   return (
     <div
       className='cs-conversation-header'
-      style={{borderBottom:'2px solid black'}}>
+      >
         {/* {sidebar ? : } */}
        <motion.div
        variants={{
