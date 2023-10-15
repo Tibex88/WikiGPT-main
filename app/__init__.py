@@ -5,11 +5,10 @@ from flask import Flask, request
 #middleware
 from app.middleware.article import desc_index_stats, init_article, answer, del_namespace
 from app.util.relevantlink import scrape_google
-# from  import desc_index_stats, init_article, answer, del_namespace
 
 app = Flask(__name__)
 
-#lallow all origins access
+#allow all origins access
 CORS(app, origins=['*'])
 
 # get articles
@@ -30,7 +29,6 @@ def query_article():
     print("namespace" ,namespace)
     ans = answer(query, namespace)
     links = scrape_google(ans)
-    print(links)
     return [ans,links]
 
 # initialize article
@@ -66,4 +64,3 @@ def test_page():
             <input type="submit" value="Submit">
             </form>
         '''
-# app.run(port=5000)

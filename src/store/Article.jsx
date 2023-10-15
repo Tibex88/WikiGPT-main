@@ -19,12 +19,10 @@ export async function addArticle(title) {
     .request(config)
     .then((response) => {
       return response.data;
-      // console.log("done");
     })
     .catch((error) => {
       console.log(error);
     });
-
     return val;
 }
 
@@ -96,7 +94,8 @@ console.log(articles, 'art');
 // articles.append(indexes)
 const useArticleStore = create((set) => ({
   articles,
-  
+  loaidngArticles:false,
+  toggleLoading : () => set((state) => ({loaidngArticles:!(state.loaidngArticles) })),
   // setArticle : (title) => set((state) => ({articles:title })),
   // toggleArticle: (idx) => set((state) => (
   // {

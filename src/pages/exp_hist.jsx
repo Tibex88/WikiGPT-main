@@ -13,8 +13,11 @@ import {
 import useArticleStore, { addArticle } from "../store/Article";
 
 function ExpHist({ title, articles }) {
+
   const [searchString, setSearchString] = useState("");
   const [searchedArticle, setSearchedArticle] = useState([]);
+  const { loaidngArticles,toggleLoading} = useArticleStore((state)=>({loaidngArticles:state.loaidngArticles, toggleLoading:state.toggleLoading}))
+
 
   const navigate = useNavigate();
 
@@ -32,9 +35,11 @@ function ExpHist({ title, articles }) {
   }
 
   async function intialize(event) {
+    toggleLoading();
     const title = event.target.innerText;
     articles.unshift({ name: title, active: false });
     await addArticle(title);
+    toggleLoading();
     navigate("/chat/" + title);
   }
 

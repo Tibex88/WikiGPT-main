@@ -11,10 +11,6 @@ import urllib
 from requests_html import HTML
 from requests_html import HTMLSession
 
-
-query = " programming language, ai, blockchain"
-
-
 def get_source(url):
     """Return the source code for the provided URL. 
 
@@ -53,17 +49,6 @@ def scrape_google(query):
             links.remove(url)
 
     return links
-
-
-links = scrape_google(query)
-
-for link in links:
-    print(link)
-    
-    
-    
-    
-    
     
 # def get_results(query):
     

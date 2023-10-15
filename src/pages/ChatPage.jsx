@@ -19,10 +19,12 @@ import {
   ChatContainer,
   InfoButton,
   TypingIndicator,
+  // Linkify,
   Sidebar,
   Avatar,
   Button,
 } from "@chatscope/chat-ui-kit-react";
+import Linkify from 'react-linkify';
 import Header from "../components/Header";
 
 //animation
@@ -50,6 +52,8 @@ function ChatPage() {
   const { messages } = useMessageStore((state) => ({
     messages: state.messages,
   }));
+
+
 
   // const [messages, setMessages] = useState([
   //   {
@@ -139,6 +143,7 @@ function ChatPage() {
         // In many cases, the historical city center has been preserved and restored to maintain its original character, and it is often a place of great beauty and charm. However, it can also be a place of conflict, as modern development and urban planning can sometimes clash with the desire to preserve the city's historical heritage.
 
         // Overall, the historical city center is a unique and important part of a city's fabric, and it is a place that offers a glimpse into the city's rich history and cultural heritage.`
+        console.log(response.data)
         addMessage(id, { message: response.data, sender: "WikiGPT" });
         setCurrentMessage(messages[id]);
         // setCurrentMessage([
@@ -215,17 +220,51 @@ function ChatPage() {
         >
           {id ? (
             currentChatMessage.map((message, i) => (
-              <Message
+             message.sender=="WikiGPT" ? ( <Message
                 style={{ display: "flex", flexDirection: "row" }}
                 className="drop_shadow"
                 key={i}
-                model={message}
+                model={{
+                  message:message.message,
+                  sender: message.sender,
+                  direction: message.direction,
+                  }}
               >
-                <div as={Message.Footer}>
-                  {/* <Avatar onClick={() => copy()} style={{width:'2px',height:'2x'}} src="/SRC/assets/icons/copy-icon.png" /> 
-           <Avatar onClick={() => del()} style={{width:'2px',height:'2px'}} src="/SRC/assets/icons/delete-icon.png" />  */}
-                </div>
+                  <Message.CustomContent>
+                <Linkify componentDecorator={(decoratedHref, decoratedText, key) => 
+                <>
+                <ul>
+                  <li style={{color:"white"}}>
+                <a target="blank" rel="noopener" href={decoratedHref} key={key}>
+                        {decoratedText}
+                </a>
+                  </li>
+                </ul>
+                </>
+                    }>
+                    {message.message}
+                </Linkify>
+                </Message.CustomContent>
+                {/* <div as={Message.Footer}>
+                  <Avatar onClick={() => copy()} style={{width:'2px',height:'2x'}} src="/SRC/assets/icons/copy-icon.png" /> 
+           <Avatar onClick={() => del()} style={{width:'2px',height:'2px'}} src="/SRC/assets/icons/delete-icon.png" /> 
+                </div> */}
+              </Message>):
+              ( <Message
+                style={{ display: "flex", flexDirection: "row" }}
+                className="drop_shadow"
+                key={i}
+                model={{
+                  message:message.message,
+                  sender: message.sender,
+                  direction: message.direction,
+                  }}>
+                {/* <div as={Message.Footer}>
+                  <Avatar onClick={() => copy()} style={{width:'2px',height:'2x'}} src="/SRC/assets/icons/copy-icon.png" /> 
+           <Avatar onClick={() => del()} style={{width:'2px',height:'2px'}} src="/SRC/assets/icons/delete-icon.png" /> 
+                </div> */}
               </Message>
+              )
             ))
           ) : (
             <MessageList.Content

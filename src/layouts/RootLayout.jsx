@@ -72,8 +72,8 @@ export default function RootLayout() {
   // const textEnter = () => setCursorVariant("text");
   // const textLeave = () => setCursorVariant("default");
   const {sidebar, toggleSidebar} = useSideBarStore((state)=>({sidebar: state.sidebar, toggleSidebar:state.toggleSidebar}))
-  const {articles} = useArticleStore((state)=>({articles: state.articles}))
-  
+  const {articles, loaidngArticles} = useArticleStore((state)=>({articles: state.articles, loaidngArticles:state.loaidngArticles}))
+
   const mainControls = useAnimation();
 
   useEffect(()=>{
@@ -122,7 +122,9 @@ export default function RootLayout() {
       <Search className='m0' placeholder='Search' />
       
       {/* conversation list */}
-      <ConversationList>
+      <ConversationList 
+      loading={loaidngArticles}
+      >
       {  
       // conversations
       articles.map((article, index) => (
