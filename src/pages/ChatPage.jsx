@@ -213,8 +213,8 @@ function ChatPage() {
         <MessageList
           loadingMorePosition="bottom"
           // loading = {loading}
-          typingIndicator={
-            isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null
+          typingIndicator={ 
+          isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null
           }
           scrollBehavior="smooth"
         >
@@ -233,7 +233,7 @@ function ChatPage() {
                   <Message.CustomContent>
                 <Linkify componentDecorator={(decoratedHref, decoratedText, key) => 
                 <>
-                <ul>
+                <ul style={{paddingLeft:'15px'}}>
                   <li style={{color:"white"}}>
                 <a target="blank" rel="noopener" href={decoratedHref} key={key}>
                         {decoratedText}
@@ -284,6 +284,7 @@ function ChatPage() {
           <MessageInput
             className="drop_shadow input__search"
             onSend={handleSend}
+            sendButton={false} 
           />
         </MessageList>
       </ChatContainer>
@@ -303,7 +304,7 @@ function ChatPage() {
             <SideBarActions
               clicked={toggleLeftSidebar}
               as={"Avatar"}
-              src={"/src/assets/icons/cancel-icon.png"}
+              src={"/src/assets/icons2/cancel.png"}
               title={"side-panel"}
             />
 

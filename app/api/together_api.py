@@ -10,7 +10,7 @@ from langchain.utils import get_from_dict_or_env
 
 # set your API key
 together.api_key = '8a5999799cbc8816956a49eeccddac360945783c0278a420a501baf122692cd6'
-model_name = 'togethercomputer/llama-2-7b-chat'
+model_name = 'togethercomputer/llama-2-70b-chat'
 
 # list available models and descriptons
 # models = together.Models.list()

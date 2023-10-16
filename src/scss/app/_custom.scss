@@ -1,6 +1,6 @@
 
 
-.custom{
+.custom {
     &__container{
     }
     &__content {
@@ -12,5 +12,6 @@
         font-size: "1.2em";
         width: inherit;
         background-color: $green;
+        background-color: $card-bg;
     }
 }

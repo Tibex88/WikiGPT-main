@@ -65,12 +65,13 @@
   }
   
   &--open &__content {
-    display:block;
     color: $expansion-panel-content-open-color;
     background-color:$expansion-panel-content-open-bg-color;
     background-color:$seashell;
     border: 1px solid black;
-    
+    display:flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   &--closed &__content {

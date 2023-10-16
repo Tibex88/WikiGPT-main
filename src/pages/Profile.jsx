@@ -14,7 +14,7 @@ function Profile() {
     <div className='page'>
     <Header name={'profile'} />
     <div className='page__wrapper profile'>
-        <Avatar className='profile__img avatar__profile' style={{width:'175px', height:'175px'}} src={`/src/assets/chatacters/${characters[picture]}`}  />
+        <Avatar className='profile__img avatar__profile' style={{width:'175px', height:'175px'}} src={`src/assets/icons2/person.png`}  />
         <div>
         <p>Tibebe Solomon</p>
         <p>tibesolomon7@gmail.com</p>

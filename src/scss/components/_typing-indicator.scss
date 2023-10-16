@@ -23,6 +23,7 @@
     height: $typing-indicator-dot-size;
     width: $typing-indicator-dot-size;
     background-color: $typing-indicator-dot-bg-color;
+    background-color: $orange;
   }
 
   &__dot:not(:last-child) {
@@ -46,6 +47,8 @@
     background-color: $typing-indicator-text-bg-color;
     margin: $typing-indicator-text-margin;
     user-select: none;
+    color: $orange;
+    color: white;
   }
 
   @keyframes #{$prefix}-typing-indicator__typing-animation {

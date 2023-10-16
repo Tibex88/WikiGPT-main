@@ -55,6 +55,7 @@
     // !!!! TODO: set to 20px when not using fancy scroll
     right: 15px; 
     background-color: $message-list-typing-indicator-bg-color;
+    background-color: $card-bg;
     padding: 0.5em 0.5em;
     font-size: 0.9em;
     height: 1em + (1em * 0.25);

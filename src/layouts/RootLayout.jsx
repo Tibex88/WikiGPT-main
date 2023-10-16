@@ -105,17 +105,17 @@ export default function RootLayout() {
       <div className="nav"  style={{display:'flex',alignItems:'center' , justifyContent:'space-around'}}>
         
         <NavLink to='/chat'>
-        <SideBarActions src={'/src/assets/icons/add-icon.png'}  title={'new chat'}  />
+        <SideBarActions src={'/src/assets/icons2/plus.png'}  title={'new chat'}  />
         </NavLink>
 
         <NavLink to='explore'>
-        <SideBarActions  src={'/src/assets/icons/explore-icon.png'}  title={'explore'} />
+        <SideBarActions  src={'/src/assets/icons2/compassnorth.png'}  title={'explore'} />
         </NavLink>
         {/* <NavLink to='/'>  */}
 
         <SideBarActions 
           clicked={toggleSidebar} 
-          src={'/src/assets/icons/sidepanel-icon.png'}  title={'side-panel'} />
+          src={'/src/assets/icons2/showrightsidepanel.png'}  title={'side-panel'} />
         {/* </NavLink> */}
       </div> 
       {/* search bar */}
@@ -137,8 +137,8 @@ export default function RootLayout() {
         <Conversation.Operations visible >
           {/*
           {/* operations */}
-          <Button title="mark as favorite" icon={<Avatar onClick={() => alert('favourite clicked')} style={{width:'10px',height:'10px', filter: 'grayscale(100%)'}} src="/SRC/assets/icons/star.png" />} />
-          <Avatar onClick={() => alert('delete clicked')} title="delete conversation" style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/delete-icon.png" />
+          {/* <Button title="mark as favorite" icon={<Avatar onClick={() => alert('favourite clicked')} style={{width:'10px',height:'10px', filter: 'grayscale(100%)'}} src="/src/assets/icons2/star.png" />} /> */}
+          <Avatar onClick={() => alert('delete clicked')} title="delete conversation" style={{width:'5px',height:'5px'}} src="/SRC/assets/icons2/delete.png" />
           {/* <Button onClick={() => alert('edit clicked')} title="edit name" icon={<Avatar style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/hand-with-pen-icon.png" />} /> */}
           </Conversation.Operations>
         </Conversation>
@@ -152,11 +152,11 @@ export default function RootLayout() {
     <div className="setting_bar">
         
         <NavLink to='history'>
-        <Setting title='history' src='/src/assets/icons/history-icon.png' />
+        <Setting title='history' src='/src/assets/icons2/history64.png' />
         </NavLink>
 
         <NavLink to='settings'>
-        <Setting title="settings" src='/src/assets/icons/settings-icon.png' />
+        <Setting title="settings" src='/src/assets/icons2/setting.png' />
         </NavLink>
         
         {/* <NavLink to='profile'>

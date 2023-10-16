@@ -10,23 +10,23 @@ function SocialLinks({color="#fff"}) {
         </div>
         
         <a target="_blank" href="">
-          <Avatar  src={"/src/assets/icons/instagram-icon.png"} />
+          <Avatar  src={"/src/assets/icons2/instagram.png"} />
         </a>
         
         <a target="_blank" href="">
-          <Avatar  src={"/src/assets/icons/twitter-icon.png"} />
+          <Avatar  src={"/src/assets/icons2/facebook64.png"} />
         </a>
         
         <a target="_blank" href="">
-          <Avatar  src={"/src/assets/icons/telegram-icon.png"} />
+          <Avatar  src={"/src/assets/icons2/twitter.png"} />
         </a>
         
         <a target="_blank" href="">
-          <Avatar  src={"/src/assets/icons/linkedin-icon.png"} />
+          <Avatar  src={"/src/assets/icons2/telegram48.png"} />
         </a>
         
         <a target="_blank" href="">
-          <Avatar  src={"/src/assets/icons/facebook-icon.png"} />
+          <Avatar  src={"/src/assets/icons2/linkedin.png"} />
         </a>
         {/* <a>
             <BsTwitter />
