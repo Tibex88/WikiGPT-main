@@ -134,39 +134,14 @@ function ChatPage() {
       },
     })
       .then((response) => {
-        // let sample = `The historical city center refers to the oldest part of a city, typically located within the original walls or fortifications. It is an area that has been inhabited for centuries and has played a significant role in the city's history. The historical city center is often characterized by narrow streets, old buildings, and historic landmarks such as churches, palaces, and monuments.
-
-        // The historical city center has been shaped by different epochs of the city's long history, with each era leaving its mark on the architecture, culture, and layout of the area. For example, medieval cities often had narrow, winding streets and closely-packed buildings, while Renaissance cities were characterized by grand squares and ornate palaces.
-
-        // The historical city center is often considered the heart of a city, and it is where many of the city's most important landmarks and cultural institutions are located. It is also an area that is often associated with a city's identity and heritage, and it is a popular destination for tourists who want to experience the city's history and culture.
-
-        // In many cases, the historical city center has been preserved and restored to maintain its original character, and it is often a place of great beauty and charm. However, it can also be a place of conflict, as modern development and urban planning can sometimes clash with the desire to preserve the city's historical heritage.
-
-        // Overall, the historical city center is a unique and important part of a city's fabric, and it is a place that offers a glimpse into the city's rich history and cultural heritage.`
         console.log(response.data)
         addMessage(id, { message: response.data, sender: "WikiGPT" });
         setCurrentMessage(messages[id]);
-        // setCurrentMessage([
-        //   ...currentChatMessage,
-        //   {
-        //     message: response.data,
-        //     // message: sample,
-        //     sendTime: Date.now(),
-        //     sender: "WikiGPT",
-        //   },
-        // ]);
-
         setIsTyping(false);
       })
       .catch((error) => {
         setError({ content: error.message, title: error.name });
-
-        // setMessages([...currentChatMessage, {
-        //   message: JSON.stringify(error),
-        //   sender: "WikiGPT"
-        // }]);
         setIsTyping(false);
-        // console.log("Error",error.message, error.code, error.config);
       });
   }
 

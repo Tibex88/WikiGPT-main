@@ -40,15 +40,10 @@ def answer(query,namespace=''):
     
     prompt_template = get_prompt(prompt)
     
-    # together.Models.start(model_name)
-    
     output = llm(prompt_template)
     
-    # together.Models.stop(model_name)
+
     
     return output
 
-# # list_indexes()
-# del_namespace()
-# desc_index_stats()
 

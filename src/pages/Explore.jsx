@@ -22,20 +22,5 @@ export const articleLoader = async () => {
   const url = "http://127.0.0.1:5000";
   const res = await fetch("http://127.0.0.1:5000/articles");
   return res.json();
-  // var config = {
-  //   method: 'GET',
-  //   url: `http://127.0.0.1:5000/articles`,
-  //   // headers: { }
-  // };
 
-  // axios(config)
-  // .then(function (response) {
-  // console.log(data);
-  // data = JSON.stringify(data.data);
-  // setArticle(data)
-  // return data
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
 };
