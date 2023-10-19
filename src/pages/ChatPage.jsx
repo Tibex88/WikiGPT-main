@@ -24,7 +24,7 @@ import {
   Avatar,
   Button,
 } from "@chatscope/chat-ui-kit-react";
-import Linkify from 'react-linkify';
+import Linkify from "react-linkify";
 import Header from "../components/Header";
 
 //animation
@@ -52,8 +52,6 @@ function ChatPage() {
   const { messages } = useMessageStore((state) => ({
     messages: state.messages,
   }));
-
-
 
   // const [messages, setMessages] = useState([
   //   {
@@ -134,7 +132,8 @@ function ChatPage() {
       },
     })
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
+        const links = response.data[1];
         addMessage(id, { message: response.data, sender: "WikiGPT" });
         setCurrentMessage(messages[id]);
         setIsTyping(false);
@@ -153,7 +152,7 @@ function ChatPage() {
     alert("copy clicked");
   };
 
-  const del = () => {
+  const del = (evt) => {
     alert("delete clicked");
   };
 
@@ -188,59 +187,77 @@ function ChatPage() {
         <MessageList
           loadingMorePosition="bottom"
           // loading = {loading}
-          typingIndicator={ 
-          isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null
+          typingIndicator={
+            isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null
           }
           scrollBehavior="smooth"
         >
           {id ? (
-            currentChatMessage.map((message, i) => (
-             message.sender=="WikiGPT" ? ( <Message
-                style={{ display: "flex", flexDirection: "row" }}
-                className="drop_shadow"
-                key={i}
-                model={{
-                  message:message.message,
-                  sender: message.sender,
-                  direction: message.direction,
+            currentChatMessage.map((message, i) =>
+              message.sender == "WikiGPT" ? (
+                <Message
+                  style={{ display: "flex", flexDirection: "row" }}
+                  className="drop_shadow"
+                  key={i}
+                  model={{
+                    // message: message.message,
+                    sender: message.sender,
+                    direction: message.direction,
                   }}
-              >
+                >
                   <Message.CustomContent>
-                <Linkify componentDecorator={(decoratedHref, decoratedText, key) => 
-                <>
-                <ul style={{paddingLeft:'15px'}}>
-                  <li style={{color:"white"}}>
-                <a target="blank" rel="noopener" href={decoratedHref} key={key}>
-                        {decoratedText}
-                </a>
-                  </li>
-                </ul>
-                </>
-                    }>
-                    {message.message}
-                </Linkify>
-                </Message.CustomContent>
-                {/* <div as={Message.Footer}>
+                    {message.message[0]}
+
+                    {message.message[1].length <= 0 ? (
+                      <p></p>
+                    ) : (
+                      <>
+                        <p style={{ color: "#0f1c2a" }}>
+                          {" "}
+                          Extra Reference Links
+                        </p>
+                        {message.message[1].map((link, index) => {
+                          return (
+                            <ul style={{ paddingLeft: "15px" }}>
+                              <li style={{ color: "#0f1c2a" }}>
+                                <a
+                                  target="blank"
+                                  rel="noopener"
+                                  href={link.link}
+                                  key={index}
+                                >
+                                  {link.title + " - " + link.text}
+                                </a>
+                              </li>
+                            </ul>
+                          );
+                        })}
+                      </>
+                    )}
+                  </Message.CustomContent>
+                  {/* <div as={Message.Footer}>
                   <Avatar onClick={() => copy()} style={{width:'2px',height:'2x'}} src="/SRC/assets/icons/copy-icon.png" /> 
            <Avatar onClick={() => del()} style={{width:'2px',height:'2px'}} src="/SRC/assets/icons/delete-icon.png" /> 
                 </div> */}
-              </Message>):
-              ( <Message
-                style={{ display: "flex", flexDirection: "row" }}
-                className="drop_shadow"
-                key={i}
-                model={{
-                  message:message.message,
-                  sender: message.sender,
-                  direction: message.direction,
-                  }}>
-                {/* <div as={Message.Footer}>
+                </Message>
+              ) : (
+                <Message
+                  style={{ display: "flex", flexDirection: "row" }}
+                  className="drop_shadow"
+                  key={i}
+                  model={{
+                    message: message.message,
+                    sender: message.sender,
+                    direction: message.direction,
+                  }}
+                >
+                  {/* <div as={Message.Footer}>
                   <Avatar onClick={() => copy()} style={{width:'2px',height:'2x'}} src="/SRC/assets/icons/copy-icon.png" /> 
            <Avatar onClick={() => del()} style={{width:'2px',height:'2px'}} src="/SRC/assets/icons/delete-icon.png" /> 
                 </div> */}
-              </Message>
+                </Message>
               )
-            ))
+            )
           ) : (
             <MessageList.Content
               className="custom__content"
@@ -259,7 +276,7 @@ function ChatPage() {
           <MessageInput
             className="drop_shadow input__search"
             onSend={handleSend}
-            sendButton={false} 
+            sendButton={false}
           />
         </MessageList>
       </ChatContainer>
