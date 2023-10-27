@@ -1,0 +1,4 @@
+name: WikiGPT
+scripts:
+  - name: start
+    command: python main.py
