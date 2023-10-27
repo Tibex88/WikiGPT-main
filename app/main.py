@@ -1,6 +1,7 @@
 #flask
 from flask_cors import CORS
 from flask import Flask, request
+from gevent.pywsgi import WSGIServer
 
 #middleware
 from middleware.article import desc_index_stats, init_article, answer, del_namespace
@@ -67,4 +68,14 @@ def test_page():
         '''
 
 
-app.run(port=5000)
+
+
+if __name__ == '__main__':
+    # Debug/Development
+    # app.run(debug=True, host="0.0.0.0", port="5000")
+    # Production
+    http_server = WSGIServer(('', 5000), app)
+    http_server.serve_forever()
+    
+    
+# app.run(port=5000)
