@@ -3,8 +3,8 @@ from flask_cors import CORS
 from flask import Flask, request
 
 #middleware
-from app.middleware.article import desc_index_stats, init_article, answer, del_namespace
-from app.util.relevantlink import scrape_google
+from middleware.article import desc_index_stats, init_article, answer, del_namespace
+from util.relevantlink import scrape_google
 
 app = Flask(__name__)
 

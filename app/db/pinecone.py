@@ -1,5 +1,5 @@
 import pinecone
-from app.util.embed import embed_model, dimension
+from util.embed import embed_model, dimension
 
 # import os
 # from dotenv import load_dotenv
