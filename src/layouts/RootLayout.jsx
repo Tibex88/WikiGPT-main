@@ -50,7 +50,6 @@ export default function RootLayout() {
     y: 0,
   });
   const [cursorVariant, setCursorVariant] = useState("default");
-  // const [showSideBar, setShowSideBar] = useState(true)
 
   useEffect(() => {
     const mouseMove = (e) => {
@@ -66,20 +65,6 @@ export default function RootLayout() {
     };
   }, []);
 
-  // const variants = {
-  //   default: {
-  //     x: mousePosition.x - 16,
-  //     y: mousePosition.y - 16,
-  //   },
-  //   text: {
-  //     // height: 150,
-  //     // width: 150,
-  //     // x: mousePosition.x - 75,
-  //     // y: mousePosition.y - 75,
-  //     // backgroundColor: "yellow",
-  //     // mixBlendMode: "difference"
-  //   }
-  // }
 
   function deleteArticle(name) {
     articles = articles.filter((title, i) => {
@@ -88,8 +73,6 @@ export default function RootLayout() {
     console.log(articles);
   }
 
-  // const textEnter = () => setCursorVariant("text");
-  // const textLeave = () => setCursorVariant("default");
   const { sidebar, toggleSidebar } = useSideBarStore((state) => ({
     sidebar: state.sidebar,
     toggleSidebar: state.toggleSidebar,
@@ -161,7 +144,8 @@ export default function RootLayout() {
           {/* conversation list */}
           <ConversationList loading={loaidngArticles}>
             {// conversations
-            articles.map((article, index) => (
+            articles ? 
+            (articles.map((article, index) => (
               <>
                 {/* //   <MessageSeparator style={{marginBottom :'1em'}} content={isoDateString}  as={Conversation}/> */}
 
@@ -194,7 +178,37 @@ export default function RootLayout() {
                   </Conversation>
                 </NavLink>
               </>
-            ))}
+            )))
+            :
+            <NavLink to={`/chat/`}>
+                  <Conversation
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                    // key={index}
+                    active={false}
+                  >
+                    <Conversation.Content>
+                     
+                    </Conversation.Content>
+                    <Conversation.Operations visible>
+                      {/*
+          {/* operations */}
+                      {/* <Button title="mark as favorite" icon={<Avatar onClick={() => alert('favourite clicked')} style={{width:'10px',height:'10px', filter: 'grayscale(100%)'}} src="/src/assets/icons2/star.png" />} /> */}
+                      <Avatar
+                        // onClick={(event) => deleteArticle(article.name)}
+                        title="delete Article"
+                        style={{ aspectRatio:"1", height: "2px" }}
+                        src="/SRC/assets/icons2/delete.png"
+                      />
+                      {/* <Button onClick={() => alert('edit clicked')} title="edit name" icon={<Avatar style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/hand-with-pen-icon.png" />} /> */}
+                    </Conversation.Operations>
+                  </Conversation>
+                </NavLink>
+          }
+            {/* } */}
           </ConversationList>
 
           {/* setttings */}

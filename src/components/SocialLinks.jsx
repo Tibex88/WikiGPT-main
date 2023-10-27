@@ -4,7 +4,7 @@ import {BsTwitter,BsLinkedin, BsTelegram} from 'react-icons/bs'
 
 function SocialLinks({color="#fff"}) {
   return (
-    <div className='socials' style={{border:'1px solid black', display:'flex', justifyContent:'space-evenly', alignItems:'center', padding:'1px',}}>
+    <div className='socials' style={{border:'1px solid black', display:'flex', justifyContent:'space-around', alignItems:'center', padding:'1px',}}>
         <div>
         <p style={{textTransform:'capitalize', fontSize:'15px'}}>follow us on</p>
         </div>

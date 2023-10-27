@@ -6,14 +6,16 @@ let articles = await fetchArticles();
 
 var messages = {};
 
-for (let n of articles) {
-  messages[n.name] = [
-    {
-      message: ["Hello, I'm WikiGPT! Ask me anything about this article!", []],
-      sentTime: "just now",
-      sender: "WikiGPT",
-    },
-  ];
+if (articles){
+  for (let n of articles) {
+    messages[n.name] = [
+      {
+        message: ["Hello, I'm WikiGPT! Ask me anything about this article!", []],
+        sentTime: "just now",
+        sender: "WikiGPT",
+      },
+    ];
+  }
 }
 
 export function addMessage(articlename, message) {

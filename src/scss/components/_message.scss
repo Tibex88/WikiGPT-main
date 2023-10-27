@@ -13,8 +13,9 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   box-sizing: border-box;
   font-size: $message-font-size;
   font-family: $message-font-family;
-  color: $message-color;
+  // color: $message-color;
   color: $text;
+  color: #0f1c2a;
   display: flex;
   flex-direction: row;
   padding: 0;
@@ -103,7 +104,8 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
     // color: $orange;
     // color: $pw;
     background-color: $message-content-bg-color;
-    background-color:$orange;
+    // background-color:$orange;
+    background-color:#fff;
     margin-top: $message-content-margin-top;
     padding: 0.6em 0.9em;
     border-radius: $message-content-border-radius;
@@ -125,6 +127,7 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   // Modifier: Incoming message
   &--incoming {
     color: $message-incoming-color;
+    color: #fff;
     background-color: $message-incoming-bg-color;
     margin-right: auto;
 
@@ -156,6 +159,7 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
     & #{$message-class}__content {
       color: $message-content-incoming-color;
       background-color: $orange;
+      background-color: #fff;
       border-radius: $message-incoming-content-border-radius;
     }
   }
