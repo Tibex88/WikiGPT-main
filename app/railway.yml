@@ -1,0 +1,6 @@
+name: WikiGPT
+scripts:
+  - name: start
+    command: python main.py
+  - name: setup
+    command: python311, gcc
