@@ -27,6 +27,7 @@ def query_article():
     if not namespace: return "no namespace provided"
     print("query" ,query)
     print("namespace" ,namespace)
+    
     ans = answer(query, namespace)
     links = scrape_google(ans)
     return [ans,links]

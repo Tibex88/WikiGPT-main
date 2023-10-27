@@ -16,11 +16,13 @@
     aspect-ratio:1;
     height: 80%;
     border-radius: 50%;
+    filter: hue-rotate(40deg);
+
   }
 
   &:hover {
     > img {
-      filter: brightness(115%);
+      // filter: brightness(115%);
     }
   }
 

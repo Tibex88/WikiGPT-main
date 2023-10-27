@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 function CustomContent() {
   return (
-    <NavLink style={{margin:'auto'}} className='card__title' to="/explore">
+    <NavLink style={{margin:'auto',backgroundColor: "#a28351de",zIndex: "2",position:" relative"}} className='card__title' to="/explore">
         <div>Start a new chat</div>
     </NavLink>
   )

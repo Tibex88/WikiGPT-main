@@ -116,15 +116,16 @@ export default function RootLayout() {
               justifyContent: "space-around",
             }}
           >
-            <NavLink to="/chat">
+            <NavLink to="/chat" className="rotate">
               <SideBarActions
                 src={"/src/assets/icons2/plus.png"}
                 title={"new chat"}
               />
             </NavLink>
 
-            <NavLink to="explore">
+            <NavLink className="rotate" to="explore">
               <SideBarActions
+              
                 src={"/src/assets/icons2/compassnorth.png"}
                 title={"explore"}
               />

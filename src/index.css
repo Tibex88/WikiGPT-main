@@ -47,13 +47,26 @@ a:hover {
   transition: all 300ms;
 }
 
+
 .drop_shadow:hover{
   cursor: pointer;
-  filter: drop-shadow(6px 6px 0px black);
+  /* filter: drop-shadow(6px 6px 0px black); */
+}
+
+.rotate{
+  transition: all 300ms;
+}
+
+.rotate:hover{
+  rotate:180deg
 }
 
 .input{
   width:40%;
+}
+
+img{
+  /* filter: hue-rotate(40deg); */
 }
 
 

@@ -191,13 +191,14 @@ function ChatPage() {
             isTyping ? <TypingIndicator content="WikiGPT is typing" /> : null
           }
           scrollBehavior="smooth"
+          // style={{zIndex:"2"}}
         >
           {id ? (
             currentChatMessage.map((message, i) =>
               message.sender == "WikiGPT" ? (
                 <Message
                   style={{ display: "flex", flexDirection: "row" }}
-                  className="drop_shadow"
+                  className=""
                   key={i}
                   model={{
                     // message: message.message,
@@ -213,13 +214,13 @@ function ChatPage() {
                     ) : (
                       <>
                         <p style={{ color: "#0f1c2a" }}>
-                          {" "}
+                          {"     "}
                           Extra Reference Links
                         </p>
                         {message.message[1].map((link, index) => {
                           return (
                             <ul style={{ paddingLeft: "15px" }}>
-                              <li style={{ color: "#0f1c2a" }}>
+                              <li style={{ color: "#a28351" }}>
                                 <a
                                   target="blank"
                                   rel="noopener"
@@ -243,7 +244,7 @@ function ChatPage() {
               ) : (
                 <Message
                   style={{ display: "flex", flexDirection: "row" }}
-                  className="drop_shadow"
+                  className=""
                   key={i}
                   model={{
                     message: message.message,
@@ -268,6 +269,7 @@ function ChatPage() {
                 height: "100%",
                 textAlign: "center",
                 fontSize: "1.2em",
+                
               }}
             >
               <CustomContent />
@@ -277,11 +279,12 @@ function ChatPage() {
             className="drop_shadow input__search"
             onSend={handleSend}
             sendButton={false}
+            style={{zIndex:"2"}}
           />
         </MessageList>
       </ChatContainer>
 
-      <AnimatePresence>
+      <AnimatePresence >
         {id ? (
           <motion.div
             variants={{
@@ -291,13 +294,14 @@ function ChatPage() {
             initial="visible"
             animate={mainControls}
             style={{ overflowY: "scroll" }}
-            className={"scrollbar-container cs-sidebar cs-sidebar--right"}
+            className={"scrollbar-container  cs-sidebar cs-sidebar--right"}
           >
             <SideBarActions
               clicked={toggleLeftSidebar}
               as={"Avatar"}
               src={"/src/assets/icons2/cancel.png"}
               title={"side-panel"}
+              className="rotate"
             />
 
             <ExpansionPanel
