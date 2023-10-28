@@ -20,7 +20,8 @@ export const articleLoader = async () => {
   }));
 
   // const url = "http://127.0.0.1:5000";
-  var url = process.env.URL;
+  // var url = process.env.URL;
+  var url = "https://app-3byj.onrender.com";
   const res = await fetch(`${url}/articles`);
   // const res = await fetch("http://127.0.0.1:5000/articles");
   return res.json();

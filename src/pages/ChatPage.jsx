@@ -37,7 +37,8 @@ import SideBarActions from "../components/SideBarActions";
 
 function ChatPage() {
   // var url = "http://127.0.0.1:5000";
-  var url = process.env.URL;
+  var url = "https://app-3byj.onrender.com";
+  // var url = process.env.URL;
   console.log(url)
   
   const customHeaders = { "ngrok-skip-browser-warning": true };

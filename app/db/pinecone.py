@@ -1,5 +1,5 @@
 import pinecone
-from util.embed import embed_model, dimension
+from util.embed import co, model_dimension
 
 # import os
 # from dotenv import load_dotenv
@@ -44,7 +44,7 @@ def upsert_to_db(text, embeddings, namespace=None):
     return True
   
 def get_data_from_db(query,namespace):
-    embedded_query = embed_model.get_text_embedding(query)
+    embedded_query = co.embed(query)
     result = pinecone_index.query(embedded_query, top_k=20, namespace=namespace, includeMetadata=True)
     matches = []
     for i in result['matches']:

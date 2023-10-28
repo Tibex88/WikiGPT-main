@@ -4,7 +4,9 @@ import axios from "axios";
 // import indexes from '../api/pinecons'
 // require('dotenv').config();
 
-var url = process.env.URL;
+// var url = process.env.URL;
+// var url = "http://127.0.0.1:5000";
+var url = "https://app-3byj.onrender.com";
 
 export async function addArticle(title) {
   let data = new FormData();
