@@ -1,7 +1,7 @@
 #flask
 from flask_cors import CORS
 from flask import Flask, request
-from gevent.pywsgi import WSGIServer
+# from gevent.pywsgi import WSGIServer
 
 #middleware
 from middleware.article import desc_index_stats, init_article, answer, del_namespace
