@@ -172,7 +172,7 @@ export default function RootLayout() {
                         onClick={(event) => deleteArticle(article.name)}
                         title="delete Article"
                         style={{ width: "5px", height: "5px" }}
-                        src="/SRC/assets/icons2/delete.png"
+                        src="/src/assets/icons2/delete.png"
                       />
                       {/* <Button onClick={() => alert('edit clicked')} title="edit name" icon={<Avatar style={{width:'10px',height:'10px'}} src="/SRC/assets/icons/hand-with-pen-icon.png" />} /> */}
                     </Conversation.Operations>
