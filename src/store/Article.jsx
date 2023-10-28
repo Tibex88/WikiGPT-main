@@ -4,13 +4,15 @@ import axios from "axios";
 // import indexes from '../api/pinecons'
 // require('dotenv').config();
 
+var url = process.env.URL;
+
 export async function addArticle(title) {
   let data = new FormData();
   data.append("title", title);
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: "http://127.0.0.1:5000//new article",
+    url:`${url}/new article`,
     headers: {},
     data: data,
   };

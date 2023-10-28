@@ -19,8 +19,10 @@ export const articleLoader = async () => {
     setArticle: state.setArticle,
   }));
 
-  const url = "http://127.0.0.1:5000";
-  const res = await fetch("http://127.0.0.1:5000/articles");
+  // const url = "http://127.0.0.1:5000";
+  var url = process.env.URL;
+  const res = await fetch(`${url}/articles`);
+  // const res = await fetch("http://127.0.0.1:5000/articles");
   return res.json();
 
 };
