@@ -19,8 +19,7 @@ export async function addArticle(title) {
     data: data,
   };
 
-  const val = await axios
-    .request(config)
+  const val = await axios(config)
     .then((response) => {
       return response.data;
     })
@@ -30,21 +29,17 @@ export async function addArticle(title) {
     return val;
 }
 
-
-
 export async function fetchArticles() {
   let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "http://127.0.0.1:5000//articles",
-    headers: {},
+    method: "GET",
+    url:`${url}/articles`,
   };
 
-  let val = await axios
-    .request(config)
+  let val = await axios(config)
     .then((response) => {
       let article = [];
       for (let i = 0; i < response.data.length; i++) {
+        console.log(response.data)
         const name = response.data[i];
         article.push({  name, active: false });
       }
